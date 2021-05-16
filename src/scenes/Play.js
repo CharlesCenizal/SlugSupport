@@ -144,7 +144,8 @@ class Play extends Phaser.Scene {
             this.scoreLeft.text = parseInt(this.scoreLeft.text) + 10;
             this.timer -= 1000;
         }
-
+        // don't update the background for now
+/*
         if(parseInt(this.scoreLeft.text) % 1000 == 0 && parseInt(this.scoreLeft.text) > 0)
         {
           this.sound.play('sfx_select');
@@ -198,7 +199,7 @@ class Play extends Phaser.Scene {
           this.curr_background.setTexture('sea2');
         }
 
-
+*/
         this.curr_background.tilePositionX += starSpeed;
 
         if (!this.gameOver) {
