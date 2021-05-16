@@ -34,6 +34,8 @@ class Play extends Phaser.Scene {
         // first background
         this.load.image('map_1', './assets/map1.png')
         // sea background
+        // the sea was no more
+        /*
         this.load.image('sea0','./assets/sea0.png')
         this.load.image('sea1','./assets/sea1.png')
         this.load.image('sea2','./assets/sea2.png')
@@ -41,6 +43,8 @@ class Play extends Phaser.Scene {
         this.load.image('sea4','./assets/sea4.png')
         this.load.image('sea5','./assets/sea5.png')
         this.load.image('sea6','./assets/sea6.png')
+        */
+        this.load.image('bg1', './assets/bg1.png')
         //this.load.image('map_3', './assets/map_3.png')
         //this.load.image('map_4', './assets/map_4.png')
         this.load.image('rocket', './assets/Fish.png');
@@ -62,7 +66,7 @@ class Play extends Phaser.Scene {
 
 
 
-        this.curr_background = this.add.tileSprite(0,0, game.config.width, game.config.height, 'sea0').setOrigin(0, 0);
+        this.curr_background = this.add.tileSprite(0,0, game.config.width, game.config.height, 'bg1').setOrigin(0, 0);
 
         this.player1Rocket = new Rocket(this, game.config.width / 2, game.config.height / 2, 'rocket').setOrigin(0.5, 0.5);
         // add spaceshift (x3)
