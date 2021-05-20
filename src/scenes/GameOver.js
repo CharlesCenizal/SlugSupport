@@ -13,8 +13,8 @@ class GameOver extends Phaser.Scene {
         {
             fontFamily: 'Times',
             fontSize: '32px',
-            backgroundColor: '#4B0082',
-            color: '#ADD8E6',
+            backgroundColor: '#8b0000',
+            color: '#ffcccb',
             align: 'right',
             padding:
             {
@@ -27,8 +27,8 @@ class GameOver extends Phaser.Scene {
         {
             fontFamily: 'Times',
             fontSize: '14px',
-            backgroundColor: '#4B0082',
-            color: '#ADD8E6',
+            backgroundColor: '#8b0000',
+            color: '#ffcccb',
             align: 'right',
             padding:
             {

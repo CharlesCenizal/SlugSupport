@@ -16,8 +16,8 @@ class Menu extends Phaser.Scene {
         {
             fontFamily: 'Times',
             fontSize: '32px',
-            backgroundColor: '#4B0082',
-            color: '#ADD8E6',
+            backgroundColor: '#8b0000',
+            color: '#ffcccb',
             align: 'right',
             padding:
             {
@@ -28,9 +28,9 @@ class Menu extends Phaser.Scene {
         }
         // show menu text
         this.map_1 = this.add.tileSprite(0, 0, game.config.width, game.config.height, 'map_1').setOrigin(0, 0);
-        this.add.text(game.config.width / 2, game.config.height / 2 - 160, 'Shark Dodger',menuConfig).setOrigin(0.5);
-        this.add.text(game.config.width / 2, game.config.height / 2 - 96, 'Press up and down to dodge the sharks',menuConfig).setOrigin(0.5);
-        this.add.text(game.config.width / 2, game.config.height / 2 - 32, 'Press F for a speedboost',menuConfig).setOrigin(0.5);
+        this.add.text(game.config.width / 2, game.config.height / 2 - 160, 'Slug Support: Anti Air Edition',menuConfig).setOrigin(0.5);
+        this.add.text(game.config.width / 2, game.config.height / 2 - 96, '',menuConfig).setOrigin(0.5);
+        this.add.text(game.config.width / 2, game.config.height / 2 - 32, '',menuConfig).setOrigin(0.5);
 
         menuConfig.backgorundColor = "#4B0082";
         menuConfig.color = '#ADD8E6';
