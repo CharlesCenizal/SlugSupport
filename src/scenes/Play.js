@@ -69,7 +69,7 @@ class Play extends Phaser.Scene {
 
         this.curr_background = this.add.tileSprite(0,0, game.config.width, game.config.height, 'bg1').setOrigin(0, 0);
 
-        this.player1Rocket = new Rocket(this, game.config.width / 2, game.config.height / 2, 'rocket').setOrigin(0.5, 0.5);
+        this.player1Rocket = new Rocket(this, 20, game.config.height / 2, 'rocket').setOrigin(0.5, 0.5);
         // add spaceshift (x3)
 
         this.ship01 = new Spaceship(this, game.config.width + borderUISize * 6, borderUISize * 4, 'e1', 0, 30).setOrigin(0, 0);
