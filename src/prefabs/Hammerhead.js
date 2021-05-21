@@ -7,7 +7,7 @@ class Hammerhead extends Phaser.GameObjects.Sprite {
         this.active = false;
     }
 
-    update() {
+    update(time,delta,counter) {
         if (this.active) {
             // move hammerhead left
             this.x -= this.moveSpeed;
@@ -23,7 +23,10 @@ class Hammerhead extends Phaser.GameObjects.Sprite {
     reset() {
         this.active = false;
         this.x = game.config.width;
-        let randheight = Math.floor(Math.random() * game.config.height - 200);
+        let randheight = Math.floor(Math.random() * game.config.height);
+        if (randheight < 34) {
+            randheight = 34;
+        }
         this.y = randheight;
     }
 

@@ -22,7 +22,7 @@ class Spaceship extends Phaser.GameObjects.Sprite {
         this.tempSpeed = Math.ceil(Math.random() * 3) + this.moveSpeed;
         //console.log(this.moveSpeed);
         this.x = game.config.width;
-        let randheight = Math.floor(Math.random() * game.config.height - 180);
+        let randheight = Math.floor(Math.random() * game.config.height);
         if (randheight < 34) {
             randheight = 34;
         }

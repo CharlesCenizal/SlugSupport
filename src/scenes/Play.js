@@ -75,7 +75,8 @@ class Play extends Phaser.Scene {
         this.ship01 = new Spaceship(this, game.config.width + borderUISize * 6, borderUISize * 4, 'e1', 0, 30).setOrigin(0, 0);
         this.ship02 = new Spaceship(this, game.config.width + borderUISize * 3, borderUISize * 5 + borderPadding * 2, 'e1', 0, 20).setOrigin(0, 0);
       //  this.ship03 = new Spaceship(this, game.config.width, borderUISize * 6 + borderPadding * 4, 'spaceship', 0, 10).setOrigin(0, 0);
-        this.hammerhead = new Hammerhead(this, game.config.width, borderUISize * 6 + borderPadding * 4, 'e1', 0, 10).setOrigin(0, 0);
+        this.hammerhead = new Hammerhead(this, game.config.width, borderUISize * 6 + borderPadding * 4, 'hammerhead', 0, 10).setOrigin(0, 0);
+        this.wavyShip = new WavyShip(this, game.config.width, borderUISize * 6 + borderPadding * 4, 'hammerhead', 0, 10).setOrigin(0, 0);
         // define keys
         keyF = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.F);
         keyR = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.R);
@@ -215,6 +216,7 @@ class Play extends Phaser.Scene {
             this.ship02.update();
             //this.ship03.update();
             this.hammerhead.update();
+            this.wavyShip.update();
             if (!this.hammerhead.active) {
                 let randInt = Math.floor((Math.random() * 300));
                 if (randInt == 30) {
