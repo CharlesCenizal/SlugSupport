@@ -24,6 +24,8 @@ and the .setTexture('image') method in order to add technical
 involvement into the game.
 --------------------------------------------------------------
 */
+
+
 class Play extends Phaser.Scene {
     constructor() {
         super("playScene");
@@ -52,6 +54,7 @@ class Play extends Phaser.Scene {
         this.load.image('hammerhead', './assets/Hammerhead.png');
         this.load.audio('sfx_select', './assets/discord-leave.mp3');
         this.load.image('e1','./assets/enemy1.png')
+        this.load.image('bullet','./assets/Bullet.png')
 
         this.load.spritesheet('explosion', './assets/explosion.png', {
             frameWidth: 64,
@@ -77,6 +80,8 @@ class Play extends Phaser.Scene {
       //  this.ship03 = new Spaceship(this, game.config.width, borderUISize * 6 + borderPadding * 4, 'spaceship', 0, 10).setOrigin(0, 0);
         this.hammerhead = new Hammerhead(this, game.config.width, borderUISize * 6 + borderPadding * 4, 'hammerhead', 0, 10).setOrigin(0, 0);
         this.wavyShip = new WavyShip(this, game.config.width, borderUISize * 6 + borderPadding * 4, 'hammerhead', 0, 10).setOrigin(0, 0);
+
+        this.bulletGroup = new BulletGroup(this);
         // define keys
         keyF = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.F);
         keyR = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.R);
@@ -149,6 +154,10 @@ class Play extends Phaser.Scene {
         while (this.timer > 1000) {
             this.scoreLeft.text = parseInt(this.scoreLeft.text) + 10;
             this.timer -= 1000;
+        }
+
+        if (Phaser.Input.Keyboard.JustDown(keyF)) {
+            this.shoot();
         }
         // don't update the background for now
 /*
@@ -246,6 +255,10 @@ class Play extends Phaser.Scene {
             this.shipExplode(this.ship01);
         }
 
+    }
+
+    shoot() {
+        this.bulletGroup.fireBullet(this.player1Rocket.x, this.player1Rocket.y);
     }
 
 
