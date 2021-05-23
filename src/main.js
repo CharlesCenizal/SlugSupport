@@ -26,12 +26,22 @@ involvement into the game.
 */
 
 // game config
+
+let physConfig = {
+    default: 'arcade',
+    arcade: {
+        debug: false
+    }
+}
+
 let config = {
     type: Phaser.CANVAS,
     width: 640,
     height: 480,
+    physics: physConfig,
     scene: [Menu, Play, GameOver]
 }
+
 let game = new Phaser.Game(config);
 
 // set UI sizes

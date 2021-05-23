@@ -67,8 +67,10 @@ class Play extends Phaser.Scene {
     create() {
 
 
-
-
+        this.bullets = this.physics.add.group({
+            defaultKey: 'bullet',
+            maxSize: 5
+        });
 
         this.curr_background = this.add.tileSprite(0,0, game.config.width, game.config.height, 'bg1').setOrigin(0, 0);
 
@@ -81,7 +83,6 @@ class Play extends Phaser.Scene {
         this.hammerhead = new Hammerhead(this, game.config.width, borderUISize * 6 + borderPadding * 4, 'hammerhead', 0, 10).setOrigin(0, 0);
         this.wavyShip = new WavyShip(this, game.config.width, borderUISize * 6 + borderPadding * 4, 'hammerhead', 0, 10).setOrigin(0, 0);
 
-        this.bulletGroup = new BulletGroup(this);
         // define keys
         keyF = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.F);
         keyR = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.R);
@@ -157,8 +158,21 @@ class Play extends Phaser.Scene {
         }
 
         if (Phaser.Input.Keyboard.JustDown(keyF)) {
-            this.shoot();
+            this.shoot(this.player1Rocket.x, this.player1Rocket.y);
         }
+
+        this.bullets.children.each(function(bull) {
+            if (bull.active) {
+                if (bull.x > game.config.width) {
+                  bull.setActive(false);
+                }
+            }
+            if (this.checkCollision(bull, this.ship01)) {
+                console.log('hit');
+                bull.setActive(false);
+                bull.setVisible(false);
+            }
+        }.bind(this));
         // don't update the background for now
 /*
         if(parseInt(this.scoreLeft.text) % 1000 == 0 && parseInt(this.scoreLeft.text) > 0)
@@ -257,8 +271,13 @@ class Play extends Phaser.Scene {
 
     }
 
-    shoot() {
-        this.bulletGroup.fireBullet(this.player1Rocket.x, this.player1Rocket.y);
+    shoot(x, y) {
+        let bullet = this.bullets.get(x, y);
+        if (bullet) {
+            bullet.setActive(true);
+            bullet.setVisible(true);
+            bullet.body.velocity.x = 200;
+        }
     }
 
 
