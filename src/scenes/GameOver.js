@@ -4,7 +4,7 @@ class GameOver extends Phaser.Scene {
     }
 
     preload() {
-        this.load.image('map_1', './assets/map1.png')
+        this.load.image('map_1', './assets/game_title.png')
         this.load.audio('sfx_select', './assets/discord-leave.mp3');
     }
 

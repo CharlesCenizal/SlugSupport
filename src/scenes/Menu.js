@@ -3,7 +3,8 @@ class Menu extends Phaser.Scene {
         super("menuScene");
     }
     preload() {
-        this.load.image('map_1', './assets/map1.png')
+
+        this.load.image('map_1', './assets/game_title.png')
         this.load.audio('sfx_select', './assets/discord-leave.mp3');
         this.load.audio('sfx_explosion', './assets/assets_explosion38.wav');
         this.load.audio('sfx_rocket', './assets/assets_rocket_shot.wav');
