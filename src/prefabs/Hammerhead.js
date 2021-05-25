@@ -21,6 +21,8 @@ class Hammerhead extends Phaser.GameObjects.Sprite {
     }
     // position reset
     reset() {
+        this.setActive(true);
+        this.setVisible(true);
         this.active = false;
         this.x = game.config.width;
         let randheight = Math.floor(Math.random() * game.config.height);

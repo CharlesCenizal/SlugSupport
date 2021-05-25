@@ -79,7 +79,7 @@ class Play extends Phaser.Scene {
 
         this.ship01 = new Spaceship(this, game.config.width + borderUISize * 6, borderUISize * 4, 'e1', 0, 30).setOrigin(0, 0);
         this.ship02 = new Spaceship(this, game.config.width + borderUISize * 3, borderUISize * 5 + borderPadding * 2, 'e1', 0, 20).setOrigin(0, 0);
-      //  this.ship03 = new Spaceship(this, game.config.width, borderUISize * 6 + borderPadding * 4, 'spaceship', 0, 10).setOrigin(0, 0);
+        this.ship03 = new Spaceship(this, game.config.width, borderUISize * 6 + borderPadding * 4, 'spaceship', 0, 10).setOrigin(0, 0);
         this.hammerhead = new Hammerhead(this, game.config.width, borderUISize * 6 + borderPadding * 4, 'hammerhead', 0, 10).setOrigin(0, 0);
         this.wavyShip = new WavyShip(this, game.config.width, borderUISize * 6 + borderPadding * 4, 'hammerhead', 0, 10).setOrigin(0, 0);
 
@@ -158,7 +158,7 @@ class Play extends Phaser.Scene {
         }
 
         if (Phaser.Input.Keyboard.JustDown(keyF)) {
-            this.shoot(this.player1Rocket.x, this.player1Rocket.y);
+            this.shoot(this.player1Rocket.x + this.player1Rocket.width, this.player1Rocket.y);
         }
 
         this.bullets.children.each(function(bull) {
@@ -171,7 +171,33 @@ class Play extends Phaser.Scene {
                 console.log('hit');
                 bull.setActive(false);
                 bull.setVisible(false);
+                this.shipExplode(this.ship01);
             }
+            else if (this.checkCollision(bull, this.ship02)) {
+                console.log('hit');
+                bull.setActive(false);
+                bull.setVisible(false);
+                this.shipExplode(this.ship02);
+            }
+            else if (this.checkCollision(bull, this.ship03)) {
+                console.log('hit');
+                bull.setActive(false);
+                bull.setVisible(false);
+                this.shipExplode(this.ship03);
+            }
+            else if (this.checkCollision(bull, this.hammerhead)) {
+                console.log('hit');
+                bull.setActive(false);
+                bull.setVisible(false);
+                this.shipExplode(this.hammerhead);
+            }
+            else if (this.checkCollision(bull, this.wavyShip)) {
+                console.log('hit');
+                bull.setActive(false);
+                bull.setVisible(false);
+                this.shipExplode(this.wavyShip);
+            }
+            
         }.bind(this));
         // don't update the background for now
 /*
@@ -296,9 +322,7 @@ class Play extends Phaser.Scene {
 
     shipExplode(ship) {
         this.sound.play('explode');
-        console.log("trying to go to game over scene");
-        this.scene.start("gameOverScene");
-
-
+        ship.setVisible(false);
+        ship.setActive(false);
     }
 }
