@@ -49,7 +49,7 @@ class Play extends Phaser.Scene {
         this.load.image('bg1', './assets/bg1.png')
         //this.load.image('map_3', './assets/map_3.png')
         //this.load.image('map_4', './assets/map_4.png')
-        this.load.image('rocket', './assets/Fish.png');
+        this.load.image('rocket', './assets/TURRET.png');
         this.load.image('spaceship', './assets/Shark.png');
         this.load.image('hammerhead', './assets/Hammerhead.png');
         this.load.audio('sfx_select', './assets/discord-leave.mp3');
@@ -197,7 +197,7 @@ class Play extends Phaser.Scene {
                 bull.setVisible(false);
                 this.shipExplode(this.wavyShip);
             }
-            
+
         }.bind(this));
         // don't update the background for now
 /*
