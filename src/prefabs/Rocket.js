@@ -9,10 +9,10 @@ class Rocket extends Phaser.GameObjects.Sprite {
         this.sfxRocket = scene.sound.add('sfx_rocket');
         this.dashTimer = 0;
         this.fatigue = false;
+        this.active = false;
     }
 
     update(time, delta, counter) {
-        console.log(this.dashTimer);
         if (this.dashTimer > 240) {
             this.fatigue = true;
             this.moveSpeed = 4;

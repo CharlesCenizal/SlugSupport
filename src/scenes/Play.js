@@ -50,10 +50,13 @@ class Play extends Phaser.Scene {
         //this.load.image('map_3', './assets/map_3.png')
         //this.load.image('map_4', './assets/map_4.png')
         this.load.image('rocket', './assets/TURRET.png');
-        this.load.image('spaceship', './assets/Shark.png');
+        this.load.image('spaceship', './assets/spaceship.png');
         this.load.image('hammerhead', './assets/Hammerhead.png');
         this.load.audio('sfx_select', './assets/discord-leave.mp3');
         this.load.image('e1','./assets/enemy1.png')
+        this.load.image('aircraft','./assets/aircraft.png')
+        this.load.image('helicopter','./assets/helicopter.png')
+        this.load.image('stealthPlane','./assets/stealthPlane.png')
         this.load.image('bullet','./assets/Bullet.png')
 
         this.load.spritesheet('explosion', './assets/explosion.png', {
@@ -79,9 +82,10 @@ class Play extends Phaser.Scene {
 
         this.ship01 = new Spaceship(this, game.config.width + borderUISize * 6, borderUISize * 4, 'e1', 0, 30).setOrigin(0, 0);
         this.ship02 = new Spaceship(this, game.config.width + borderUISize * 3, borderUISize * 5 + borderPadding * 2, 'e1', 0, 20).setOrigin(0, 0);
-        this.ship03 = new Spaceship(this, game.config.width, borderUISize * 6 + borderPadding * 4, 'spaceship', 0, 10).setOrigin(0, 0);
-        this.hammerhead = new Hammerhead(this, game.config.width, borderUISize * 6 + borderPadding * 4, 'hammerhead', 0, 10).setOrigin(0, 0);
-        this.wavyShip = new WavyShip(this, game.config.width, borderUISize * 6 + borderPadding * 4, 'hammerhead', 0, 10).setOrigin(0, 0);
+        this.ship03 = new Spaceship(this, game.config.width, borderUISize * 6 + borderPadding * 4, 'e1', 0, 10).setOrigin(0, 0);
+        this.hammerhead = new Hammerhead(this, game.config.width, borderUISize * 6 + borderPadding * 4, 'spaceship', 0, 10).setOrigin(0, 0);
+        this.wavyShip = new WavyShip(this, game.config.width, borderUISize * 6 + borderPadding * 4, 'aircraft', 0, 10).setOrigin(0, 0);
+        this.helicopter = new Helicopter(this, game.config.width, borderUISize * 6 + borderPadding * 4, 'helicopter', 0, 10, 3).setOrigin(0, 0);
 
         // define keys
         keyF = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.F);
@@ -168,34 +172,34 @@ class Play extends Phaser.Scene {
                 }
             }
             if (this.checkCollision(bull, this.ship01)) {
-                console.log('hit');
                 bull.setActive(false);
                 bull.setVisible(false);
                 this.shipExplode(this.ship01);
             }
             else if (this.checkCollision(bull, this.ship02)) {
-                console.log('hit');
                 bull.setActive(false);
                 bull.setVisible(false);
                 this.shipExplode(this.ship02);
             }
             else if (this.checkCollision(bull, this.ship03)) {
-                console.log('hit');
                 bull.setActive(false);
                 bull.setVisible(false);
                 this.shipExplode(this.ship03);
             }
             else if (this.checkCollision(bull, this.hammerhead)) {
-                console.log('hit');
                 bull.setActive(false);
                 bull.setVisible(false);
                 this.shipExplode(this.hammerhead);
             }
             else if (this.checkCollision(bull, this.wavyShip)) {
-                console.log('hit');
                 bull.setActive(false);
                 bull.setVisible(false);
                 this.shipExplode(this.wavyShip);
+            }
+            else if (this.checkCollision(bull, this.helicopter)) {
+                bull.setActive(false);
+                bull.setVisible(false);
+                this.helicopter.health -= 1;
             }
 
         }.bind(this));
@@ -266,6 +270,7 @@ class Play extends Phaser.Scene {
             //this.ship03.update();
             this.hammerhead.update();
             this.wavyShip.update();
+            this.helicopter.update();
             if (!this.hammerhead.active) {
                 let randInt = Math.floor((Math.random() * 300));
                 if (randInt == 30) {
@@ -308,6 +313,9 @@ class Play extends Phaser.Scene {
 
 
     checkCollision(rocket, ship) {
+        if (!rocket.active || !ship.active) {
+          return false;
+        }
         // simple AABB checking
         if (rocket.x < ship.x + ship.width &&
             rocket.x + rocket.width > ship.x &&
