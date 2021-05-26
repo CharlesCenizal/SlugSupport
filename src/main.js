@@ -36,8 +36,8 @@ let physConfig = {
 
 let config = {
     type: Phaser.CANVAS,
-    width: 640,
-    height: 480,
+    width: 800,
+    height: 600,
     physics: physConfig,
     scene: [Menu, Play, GameOver]
 }
