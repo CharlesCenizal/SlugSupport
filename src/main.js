@@ -39,7 +39,7 @@ let config = {
     width: 800,
     height: 600,
     physics: physConfig,
-    scene: [Menu, Play, GameOver]
+    scene: [Menu, Play, Wave1, Wave2, Wave3, WaveClearMenu, GameOver]
 }
 
 let game = new Phaser.Game(config);

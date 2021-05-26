@@ -1,10 +1,11 @@
 class Spaceship extends Phaser.GameObjects.Sprite {
-    constructor(scene, x, y, texture, frame, pointValue) {
+    constructor(scene, x, y, texture, frame, pointValue, lives) {
         super(scene, x, y, texture, frame);
         scene.add.existing(this); // add to existing scene
         this.points = pointValue; // store point value
         this.moveSpeed = 3;       // pixels per frame
         this.tempSpeed = 4;
+        this.lifePoints = lives;
     }
 
     update() {
@@ -13,7 +14,7 @@ class Spaceship extends Phaser.GameObjects.Sprite {
 
         // wrap around
 
-        if (this.x <= 0 - this.width) {
+        if (this.x <= 0 - this.width && this.lifePoints > 0) {
             this.reset();
         }
     }
@@ -21,7 +22,7 @@ class Spaceship extends Phaser.GameObjects.Sprite {
     reset() {
         this.setActive(true);
         this.setVisible(true);
-        this.tempSpeed = Math.ceil(Math.random() * 3) + this.moveSpeed;
+        this.tempSpeed = Math.ceil(Math.random() * 2) + this.moveSpeed;
         //console.log(this.moveSpeed);
         this.x = game.config.width;
         let randheight = Math.floor(Math.random() * game.config.height);
@@ -29,6 +30,10 @@ class Spaceship extends Phaser.GameObjects.Sprite {
             randheight = 34;
         }
         this.y = randheight;
+    }
+    
+    takeDamage() {
+        this.lifePoints -= 1;
     }
 
 }

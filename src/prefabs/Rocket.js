@@ -1,33 +1,15 @@
 class Rocket extends Phaser.GameObjects.Sprite {
-    constructor(scene, x, y, texture, frame) {
-        super(scene, x, y, texture, frame);
+    constructor(scene, x, y, texture, moveSpd) {
+        super(scene, x, y, texture, moveSpd);
 
         // add object to existing scene
         scene.add.existing(this);
-        this.isFiring = false; // track rocket firing status
-        this.moveSpeed = 4;
+        this.moveSpeed = moveSpd;
         this.sfxRocket = scene.sound.add('sfx_rocket');
-        this.dashTimer = 0;
-        this.fatigue = false;
         this.active = false;
     }
 
     update(time, delta, counter) {
-        if (this.dashTimer > 240) {
-            this.fatigue = true;
-            this.moveSpeed = 4;
-        }
-        if (this.dashTimer > 840) {
-            this.dashTimer = 0;
-            this.fatigue = false;
-            this.isFiring = false;
-        }
-        if (this.isFiring) {
-            if (!this.fatigue) {
-                this.moveSpeed = 6;
-            }
-            this.dashTimer += 1;
-        }
         // left and right movement
         /*if (keyLEFT.isDown && this.x >= borderUISize + 30) {
             this.x -= this.moveSpeed;

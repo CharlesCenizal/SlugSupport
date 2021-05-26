@@ -1,11 +1,12 @@
 class Helicopter extends Phaser.GameObjects.Sprite {
-    constructor(scene, x, y, texture, frame, pointValue, hp) {
+    constructor(scene, x, y, texture, frame, pointValue, hp, lives) {
         super(scene, x, y, texture, frame);
         scene.add.existing(this); // add to existing scene
         this.points = pointValue; // store point value
         this.moveSpeed = 2;       // pixels per frame
         this.health = hp;
         this.hitpoints = hp;
+        this.lifePoints = lives;
     }
 
     update() {
@@ -19,7 +20,7 @@ class Helicopter extends Phaser.GameObjects.Sprite {
 
         // wrap around
 
-        if (this.x <= 0 - this.width) {
+        if (this.x <= 0 - this.width && this.lifePoints > 0) {
             this.reset();
         }
     }
@@ -27,6 +28,9 @@ class Helicopter extends Phaser.GameObjects.Sprite {
     reset() {
         this.setActive(true);
         this.setVisible(true);
+        if (this.health <= 0) {
+            this.lifePoints -= 1;
+        }
         this.health = this.hitpoints;
         //console.log(this.moveSpeed);
         this.x = game.config.width;

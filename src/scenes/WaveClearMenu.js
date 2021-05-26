@@ -1,6 +1,6 @@
-class Menu extends Phaser.Scene {
+class WaveClearMenu extends Phaser.Scene {
     constructor() {
-        super("menuScene");
+        super("WaveClearMenuScene");
     }
     preload() {
 
@@ -29,13 +29,14 @@ class Menu extends Phaser.Scene {
         }
         // show menu text
         this.map_1 = this.add.tileSprite(0, 0, game.config.width, game.config.height, 'map_1').setOrigin(0, 0);
-        this.add.text(game.config.width / 2, game.config.height / 2 - 160, 'Slug Support: Anti Air Edition',menuConfig).setOrigin(0.5);
+        this.add.text(game.config.width / 2, game.config.height / 2 - 160, 'WAVE CLEAR',menuConfig).setOrigin(0.5);
         this.add.text(game.config.width / 2, game.config.height / 2 - 96, '',menuConfig).setOrigin(0.5);
         this.add.text(game.config.width / 2, game.config.height / 2 - 32, '',menuConfig).setOrigin(0.5);
 
         menuConfig.backgorundColor = "#4B0082";
         menuConfig.color = '#ADD8E6';
-        this.add.text(game.config.width / 2, game.config.height / 2 + borderUISize + borderPadding, 'Press ← or → to play', menuConfig).setOrigin(0.5);
+        this.add.text(game.config.width / 2, game.config.height / 2 + borderUISize + borderPadding, 'Press ← to upgrade movement', menuConfig).setOrigin(0.5);
+        this.add.text(game.config.width / 2, game.config.height / 2 + borderUISize + borderPadding + 100, 'Press → to upgrade bullets', menuConfig).setOrigin(0.5);
 
         // define keys
         keyLEFT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.LEFT);
@@ -61,22 +62,14 @@ class Menu extends Phaser.Scene {
     update() {
         //this.music.play(musicConfig);
         if (Phaser.Input.Keyboard.JustDown(keyLEFT)) {
-            game.settings =
-            {
-                currWave: 1,
-                turretSpeed: 4,
-                maxAmmo: 3
-            }
+            game.settings.currWave += 1;
+            game.settings.turretSpeed += 1;
             this.sound.play('sfx_select');
             this.scene.start("wave" + game.settings.currWave + "Scene");
         }
         if (Phaser.Input.Keyboard.JustDown(keyRIGHT)) {
-            game.settings =
-            {
-                currWave: 1,
-                turretSpeed: 4,
-                maxAmmo: 3
-            }
+            game.settings.currWave += 1;
+            game.settings.maxAmmo += 1;
             this.sound.play('sfx_select');
             this.scene.start("wave" + game.settings.currWave + "Scene");
         }
