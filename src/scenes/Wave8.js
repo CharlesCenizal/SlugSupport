@@ -1,6 +1,3 @@
-//
-// Wave 5
-
 class Wave8 extends Phaser.Scene {
     constructor() {
         super("wave8Scene");
@@ -31,8 +28,8 @@ class Wave8 extends Phaser.Scene {
     // adding the menu
     create() {
         // Debug line
-        console.log("On wave 8");
-        this.totalEnemyLives = 25;
+        console.log("On wave 4");
+        this.totalEnemyLives = 34;
 
         this.bullets = this.physics.add.group({
             defaultKey: 'bullet',
@@ -46,9 +43,15 @@ class Wave8 extends Phaser.Scene {
 
         this.ship01 = new Spaceship(this, game.config.width + borderUISize * 6, borderUISize * 4-75, 'e1', 0, 30, 2).setOrigin(0, 0);
         this.ship02 = new Spaceship(this, game.config.width + borderUISize * 3, borderUISize * 5 + borderPadding * 2-75, 'e1', 0, 20, 2).setOrigin(0, 0);
-        this.ship03 = new Spaceship(this, game.config.width, borderUISize * 6 + borderPadding * 4-75, 'e1', 0, 10, 2).setOrigin(0, 0);
-        this.ship04 = new Spaceship(this, game.config.width, borderUISize * 6 + borderPadding * 7-75, 'e1', 0, 10, 2).setOrigin(0, 0);
+        this.ship03 = new Spaceship(this, game.config.width + borderUISize * 3, borderUISize * 5 + borderPadding * 2-75, 'e1', 0, 20, 2).setOrigin(0, 0);
+        this.hammerhead = new Hammerhead(this, game.config.width, borderUISize * 6 + borderPadding * 4, 'spaceship', 0, 10, 4).setOrigin(0, 0);
+        this.hammerhead2 = new Hammerhead(this, game.config.width, borderUISize * 6 + borderPadding * 4, 'spaceship', 0, 10, 4).setOrigin(0, 0);
+        this.wavyShip1 = new WavyShip(this, game.config.width, borderUISize * 6 + borderPadding * 4, 'aircraft', 0, 10, 50, 2).setOrigin(0, 0);
+        this.wavyShip2 = new WavyShip(this, game.config.width, borderUISize * 6 + borderPadding * 4, 'aircraft', 0, 10, 50, 2).setOrigin(0, 0);
+        this.wavyShip3 = new WavyShip(this, game.config.width, borderUISize * 6 + borderPadding * 4, 'aircraft', 0, 10, 50, 2).setOrigin(0, 0);
+        this.wavyShip4 = new WavyShip(this, game.config.width, borderUISize * 6 + borderPadding * 4, 'aircraft', 0, 10, 50, 2).setOrigin(0, 0);
         this.helicopter = new Helicopter(this, game.config.width, borderUISize * 6 + borderPadding * 4-75, 'helicopter', 0, 10, 3, 2).setOrigin(0, 0);
+        this.helicopter2 = new Helicopter(this, game.config.width, borderUISize * 6 + borderPadding * 4-20, 'helicopter', 0, 10, 3, 2).setOrigin(0, 0);
 
         // define keys
         keyF = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.F);
@@ -105,11 +108,10 @@ class Wave8 extends Phaser.Scene {
 
     // update
     update(time, delta,counter) {
-      // 1000 for now in order to try to get to the end 
-      if (this.totalEnemyLives <= 1000) {
+
+      if (this.totalEnemyLives == 0) {
           this.scene.start("WaveClearMenuScene");
       }
-
         this.timer += delta;
         while (this.timer > 1000) {
             this.scoreLeft.text = parseInt(this.scoreLeft.text) + 10;
@@ -144,16 +146,52 @@ class Wave8 extends Phaser.Scene {
                 this.shipExplode(this.ship03);
                 this.totalEnemyLives -= 1;
             }
-            else if (this.checkCollision(bull, this.ship04)) {
+            else if (this.checkCollision(bull, this.hammerhead)) {
                 bull.setActive(false);
                 bull.setVisible(false);
-                this.shipExplode(this.ship04);
+                this.shipExplode(this.hammerhead);
+                this.totalEnemyLives -= 1;
+            }
+            else if (this.checkCollision(bull, this.hammerhead2)) {
+                bull.setActive(false);
+                bull.setVisible(false);
+                this.shipExplode(this.hammerhead2);
+                this.totalEnemyLives -= 1;
+            }
+            else if (this.checkCollision(bull, this.wavyShip1)) {
+                bull.setActive(false);
+                bull.setVisible(false);
+                this.shipExplode(this.wavyShip1);
+                this.totalEnemyLives -= 1;
+            }
+            else if (this.checkCollision(bull, this.wavyShip2)) {
+                bull.setActive(false);
+                bull.setVisible(false);
+                this.shipExplode(this.wavyShip2);
+                this.totalEnemyLives -= 1;
+            }
+            else if (this.checkCollision(bull, this.wavyShip3)) {
+                bull.setActive(false);
+                bull.setVisible(false);
+                this.shipExplode(this.wavyShip3);
+                this.totalEnemyLives -= 1;
+            }
+            else if (this.checkCollision(bull, this.wavyShip4)) {
+                bull.setActive(false);
+                bull.setVisible(false);
+                this.shipExplode(this.wavyShip4);
                 this.totalEnemyLives -= 1;
             }
             else if (this.checkCollision(bull, this.helicopter)) {
                 bull.setActive(false);
                 bull.setVisible(false);
                 this.helicopter.health -= 1;
+                this.totalEnemyLives -= 1;
+            }
+            else if (this.checkCollision(bull, this.helicopter2)) {
+                bull.setActive(false);
+                bull.setVisible(false);
+                this.helicopter2.health -= 1;
                 this.totalEnemyLives -= 1;
             }
 
@@ -168,8 +206,26 @@ class Wave8 extends Phaser.Scene {
             this.ship01.update();
             this.ship02.update();
             this.ship03.update();
-            this.ship04.update();
+            this.wavyShip1.update();
+            this.wavyShip2.update();
+            this.wavyShip3.update();
+            this.wavyShip4.update();
             this.helicopter.update();
+            this.helicopter2.update();
+            this.hammerhead.update();
+            this.hammerhead2.update();
+            if (!this.hammerhead.active) {
+                let randInt = Math.floor((Math.random() * 200));
+                if (randInt == 20) {
+                    this.hammerhead.active = true;
+                }
+            }
+            if (!this.hammerhead2.active) {
+                let randInt = Math.floor((Math.random() * 200));
+                if (randInt == 20) {
+                    this.hammerhead2.active = true;
+                }
+            }
         }
 
     }

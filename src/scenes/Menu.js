@@ -65,7 +65,7 @@ class Menu extends Phaser.Scene {
         if (Phaser.Input.Keyboard.JustDown(keyLEFT)) {
             game.settings =
             {
-                currWave: 1,
+                currWave: 8,
                 turretSpeed: 7,
                 maxAmmo: 1000 // High ammo for now
             }

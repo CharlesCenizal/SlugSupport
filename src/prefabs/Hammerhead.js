@@ -1,10 +1,11 @@
 class Hammerhead extends Phaser.GameObjects.Sprite {
-    constructor(scene, x, y, texture, frame, pointValue) {
+    constructor(scene, x, y, texture, frame, pointValue, lives) {
         super(scene, x, y, texture, frame);
         scene.add.existing(this); // add to existing scene
         this.points = pointValue; // store point value
         this.moveSpeed = 7;       // pixels per frame
         this.active = false;
+        this.lifePoints = lives;
     }
 
     update(time,delta,counter) {
@@ -15,7 +16,7 @@ class Hammerhead extends Phaser.GameObjects.Sprite {
 
         // wrap around
 
-        if (this.x <= 0 - this.width) {
+        if (this.x <= 0 - this.width && this.lifePoints > 0) {
             this.reset();
         }
     }
@@ -32,4 +33,7 @@ class Hammerhead extends Phaser.GameObjects.Sprite {
         this.y = randheight;
     }
 
+    takeDamage() {
+        this.lifePoints -= 1;
+    }
 }

@@ -11,7 +11,6 @@ class Helicopter extends Phaser.GameObjects.Sprite {
 
     update() {
         // move spaceshift left
-        console.log(this.health + "health");
         if (this.health <= 0) {
             this.setActive(false);
             this.setVisible(false);
@@ -26,10 +25,12 @@ class Helicopter extends Phaser.GameObjects.Sprite {
     }
     // position reset
     reset() {
-        this.setActive(true);
-        this.setVisible(true);
         if (this.health <= 0) {
             this.lifePoints -= 1;
+        }
+        if (this.lifePoints > 0) {
+            this.setActive(true);
+            this.setVisible(true);
         }
         this.health = this.hitpoints;
         //console.log(this.moveSpeed);

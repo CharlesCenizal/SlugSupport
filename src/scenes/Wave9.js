@@ -106,7 +106,7 @@ class Wave9 extends Phaser.Scene {
     // update
     update(time, delta,counter) {
       // 1000 for now in order to try to get to the end 
-      if (this.totalEnemyLives <= 1000) {
+      if (this.totalEnemyLives == 0) {
           this.scene.start("WaveClearMenuScene");
       }
         this.timer += delta;
