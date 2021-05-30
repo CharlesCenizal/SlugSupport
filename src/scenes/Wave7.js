@@ -105,11 +105,10 @@ class Wave7 extends Phaser.Scene {
 
     // update
     update(time, delta,counter) {
-
-        if (this.totalEnemyLives == 0) {
-            this.scene.start("WaveClearMenuScene");
-        }
-
+      // 1000 for now in order to try to get to the end 
+      if (this.totalEnemyLives <= 1000) {
+          this.scene.start("WaveClearMenuScene");
+      }
         this.timer += delta;
         while (this.timer > 1000) {
             this.scoreLeft.text = parseInt(this.scoreLeft.text) + 10;
