@@ -66,7 +66,7 @@ class Menu extends Phaser.Scene {
             game.settings =
             {
                 currWave: 1,
-                turretSpeed: 6,
+                turretSpeed: 7,
                 maxAmmo: 1000 // High ammo for now
             }
             this.sound.play('sfx_select');
@@ -78,7 +78,7 @@ class Menu extends Phaser.Scene {
             game.settings =
             {
                 currWave: 1,
-                turretSpeed: 6,
+                turretSpeed: 7,
                 maxAmmo: 1000 // High ammo for now
             }
             this.sound.play('sfx_select');

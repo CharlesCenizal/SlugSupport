@@ -66,7 +66,7 @@ class WaveClearMenu extends Phaser.Scene {
             game.settings.turretSpeed += 1;
             this.sound.play('sfx_select');
             // This line of code is for debugging
-            console.log("now on wave " + game.settings.currWave);
+            console.log("From Select -> now on wave " + game.settings.currWave);
             this.scene.start("wave" + game.settings.currWave + "Scene");
         }
         if (Phaser.Input.Keyboard.JustDown(keyRIGHT)) {

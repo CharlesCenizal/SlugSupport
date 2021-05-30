@@ -30,7 +30,7 @@ class Wave5 extends Phaser.Scene {
     // adding the menu
     create() {
         // Debug line
-        console.log("On wave 5")
+        console.log("On wave 5");
         this.totalEnemyLives = 25;
 
         this.bullets = this.physics.add.group({
@@ -43,11 +43,11 @@ class Wave5 extends Phaser.Scene {
         this.player1Rocket = new Rocket(this, 20, game.config.height / 2, 'rocket', game.settings.turretSpeed).setOrigin(0.5, 0.5);
         // add spaceshift (x3)
 
-        this.ship01 = new Spaceship(this, game.config.width + borderUISize * 6, borderUISize * 4, 'e1', 0, 30, 2).setOrigin(0, 0);
-        this.ship02 = new Spaceship(this, game.config.width + borderUISize * 3, borderUISize * 5 + borderPadding * 2, 'e1', 0, 20, 2).setOrigin(0, 0);
-        this.ship03 = new Spaceship(this, game.config.width, borderUISize * 6 + borderPadding * 4, 'e1', 0, 10, 2).setOrigin(0, 0);
-        this.ship04 = new Spaceship(this, game.config.width, borderUISize * 6 + borderPadding * 7, 'e1', 0, 10, 2).setOrigin(0, 0);
-        this.helicopter = new Helicopter(this, game.config.width, borderUISize * 6 + borderPadding * 4, 'helicopter', 0, 10, 3, 2).setOrigin(0, 0);
+        this.ship01 = new Spaceship(this, game.config.width + borderUISize * 6, borderUISize * 4-75, 'e1', 0, 30, 2).setOrigin(0, 0);
+        this.ship02 = new Spaceship(this, game.config.width + borderUISize * 3, borderUISize * 5 + borderPadding * 2-75, 'e1', 0, 20, 2).setOrigin(0, 0);
+        this.ship03 = new Spaceship(this, game.config.width, borderUISize * 6 + borderPadding * 4-75, 'e1', 0, 10, 2).setOrigin(0, 0);
+        this.ship04 = new Spaceship(this, game.config.width, borderUISize * 6 + borderPadding * 7-75, 'e1', 0, 10, 2).setOrigin(0, 0);
+        this.helicopter = new Helicopter(this, game.config.width, borderUISize * 6 + borderPadding * 4-75, 'helicopter', 0, 10, 3, 2).setOrigin(0, 0);
 
         // define keys
         keyF = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.F);
@@ -105,7 +105,7 @@ class Wave5 extends Phaser.Scene {
     // update
     update(time, delta,counter) {
 
-        if (this.totalEnemyLives <= 0) {
+        if (this.totalEnemyLives == 0) {
             this.scene.start("WaveClearMenuScene");
         }
 
