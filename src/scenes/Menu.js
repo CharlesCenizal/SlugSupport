@@ -59,23 +59,27 @@ class Menu extends Phaser.Scene {
         //this.scene.start("playScene")
     }
     update() {
+        // Debug Line
+        console.log("Start of Game");
         //this.music.play(musicConfig);
         if (Phaser.Input.Keyboard.JustDown(keyLEFT)) {
             game.settings =
             {
                 currWave: 1,
-                turretSpeed: 4,
-                maxAmmo: 3
+                turretSpeed: 6,
+                maxAmmo: 1000 // High ammo for now
             }
             this.sound.play('sfx_select');
+            // This line of code is for debugging
+            console.log("now on wave " + game.settings.currWave);
             this.scene.start("wave" + game.settings.currWave + "Scene");
         }
         if (Phaser.Input.Keyboard.JustDown(keyRIGHT)) {
             game.settings =
             {
                 currWave: 1,
-                turretSpeed: 4,
-                maxAmmo: 3
+                turretSpeed: 6,
+                maxAmmo: 1000 // High ammo for now
             }
             this.sound.play('sfx_select');
             this.scene.start("wave" + game.settings.currWave + "Scene");

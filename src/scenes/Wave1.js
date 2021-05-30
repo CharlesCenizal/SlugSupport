@@ -27,7 +27,8 @@ class Wave1 extends Phaser.Scene {
     }
     // adding the menu
     create() {
-
+        // Debug line
+        console.log("On wave 1");
         this.totalEnemyLives = 4;
 
         this.bullets = this.physics.add.group({
@@ -42,7 +43,7 @@ class Wave1 extends Phaser.Scene {
 
         this.ship01 = new Spaceship(this, game.config.width + borderUISize * 6, borderUISize * 4, 'e1', 0, 30, 2).setOrigin(0, 0);
         this.ship02 = new Spaceship(this, game.config.width + borderUISize * 3, borderUISize * 5 + borderPadding * 2, 'e1', 0, 20, 2).setOrigin(0, 0);
-        
+
         // define keys
         keyF = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.F);
         keyR = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.R);
