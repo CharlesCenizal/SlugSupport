@@ -11,7 +11,7 @@ class Hammerhead extends Phaser.GameObjects.Sprite {
     update(time,delta,counter) {
         if (this.active) {
             // move hammerhead left
-            this.x -= this.moveSpeed;
+            this.x -= (this.moveSpeed * game.settings.speedMultiplier);
         }
 
         // wrap around

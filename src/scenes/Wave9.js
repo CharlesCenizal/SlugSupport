@@ -1,6 +1,3 @@
-// Wave 9
-// Wave 5
-
 class Wave9 extends Phaser.Scene {
     constructor() {
         super("wave9Scene");
@@ -31,8 +28,7 @@ class Wave9 extends Phaser.Scene {
     // adding the menu
     create() {
         // Debug line
-        console.log("On wave 9");
-        this.totalEnemyLives = 25;
+        this.totalEnemyLives = 52;
 
         this.bullets = this.physics.add.group({
             defaultKey: 'bullet',
@@ -44,14 +40,26 @@ class Wave9 extends Phaser.Scene {
         this.player1Rocket = new Rocket(this, 20, game.config.height / 2, 'rocket', game.settings.turretSpeed).setOrigin(0.5, 0.5);
         // add spaceshift (x3)
 
-        this.ship01 = new Spaceship(this, game.config.width + borderUISize * 6, borderUISize * 4-75, 'e1', 0, 30, 2).setOrigin(0, 0);
-        this.ship02 = new Spaceship(this, game.config.width + borderUISize * 3, borderUISize * 5 + borderPadding * 2-75, 'e1', 0, 20, 2).setOrigin(0, 0);
-        this.ship03 = new Spaceship(this, game.config.width, borderUISize * 6 + borderPadding * 4-75, 'e1', 0, 10, 2).setOrigin(0, 0);
-        this.ship04 = new Spaceship(this, game.config.width, borderUISize * 6 + borderPadding * 7-75, 'e1', 0, 10, 2).setOrigin(0, 0);
+        this.ship01 = new Spaceship(this, game.config.width + borderUISize * 6, 25, 'e1', 0, 30, 2).setOrigin(0, 0);
+        this.ship02 = new Spaceship(this, game.config.width + borderUISize * 3, 50, 'e1', 0, 20, 2).setOrigin(0, 0);
+        this.ship03 = new Spaceship(this, game.config.width + borderUISize * 3, 75, 'e1', 0, 20, 2).setOrigin(0, 0);
+        this.ship04 = new Spaceship(this, game.config.width + borderUISize * 6, 100, 'e1', 0, 30, 2).setOrigin(0, 0);
+        this.ship05 = new Spaceship(this, game.config.width + borderUISize * 3, 125, 'e1', 0, 20, 2).setOrigin(0, 0);
+        this.ship06 = new Spaceship(this, game.config.width + borderUISize * 3, 150, 'e1', 0, 20, 2).setOrigin(0, 0);
+        this.hammerhead = new Hammerhead(this, game.config.width, borderUISize * 6 + borderPadding * 4, 'spaceship', 0, 10, 4).setOrigin(0, 0);
+        this.hammerhead2 = new Hammerhead(this, game.config.width, borderUISize * 6 + borderPadding * 4, 'spaceship', 0, 10, 4).setOrigin(0, 0);
+        this.wavyShip1 = new WavyShip(this, game.config.width, borderUISize * 6 + borderPadding * 4, 'aircraft', 0, 10, 50, 2).setOrigin(0, 0);
+        this.wavyShip2 = new WavyShip(this, game.config.width, borderUISize * 6 + borderPadding * 4, 'aircraft', 0, 10, 50, 2).setOrigin(0, 0);
+        this.wavyShip3 = new WavyShip(this, game.config.width, borderUISize * 6 + borderPadding * 4, 'aircraft', 0, 10, 50, 2).setOrigin(0, 0);
+        this.wavyShip4 = new WavyShip(this, game.config.width, borderUISize * 6 + borderPadding * 4, 'aircraft', 0, 10, 50, 2).setOrigin(0, 0);
         this.helicopter = new Helicopter(this, game.config.width, borderUISize * 6 + borderPadding * 4-75, 'helicopter', 0, 10, 3, 2).setOrigin(0, 0);
+        this.helicopter2 = new Helicopter(this, game.config.width, borderUISize * 6 + borderPadding * 4-20, 'helicopter', 0, 10, 3, 2).setOrigin(0, 0);
+        this.helicopter3 = new Helicopter(this, game.config.width, borderUISize * 6 + borderPadding * 4-20, 'helicopter', 0, 10, 3, 2).setOrigin(0, 0);
+        this.helicopter4 = new Helicopter(this, game.config.width, borderUISize * 6 + borderPadding * 4-20, 'helicopter', 0, 10, 3, 2).setOrigin(0, 0);
 
         // define keys
         keyF = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.F);
+        keyD = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
         keyR = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.R);
         keyLEFT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.LEFT);
         keyRIGHT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.RIGHT);
@@ -69,53 +77,19 @@ class Wave9 extends Phaser.Scene {
             frameRate: 30
         });
 
-        // keeping score
-        this.p1Score = 0;
-
-        // display the score
-
-        let scoreConfig =
-        {
-          fontFamily: 'Times',
-          fontSize: '32px',
-          backgroundColor: '#4B0082',
-          color: '#ADD8E6',
-          align: 'right',
-          padding:
-          {
-              top: 10,
-              bottom: 10,
-          },
-          fixedWidth: 0
-        }
-        this.scoreLeft = this.add.text(borderUISize + borderPadding, borderUISize + borderPadding * 2, this.p1Score, scoreConfig);
-
-        // game over
-        this.gameOver = false;
-
-        // 60 second play clock
-
-        scoreConfig.fixedWidth = 0;
-
-
-        this.difficultyTimer = 0;
-        this.timer = 0;
-        this.counter = 0;
     }
 
     // update
     update(time, delta,counter) {
-      // 1000 for now in order to try to get to the end 
+
       if (this.totalEnemyLives == 0) {
           this.scene.start("WaveClearMenuScene");
       }
-        this.timer += delta;
-        while (this.timer > 1000) {
-            this.scoreLeft.text = parseInt(this.scoreLeft.text) + 10;
-            this.timer -= 1000;
-        }
 
         if (Phaser.Input.Keyboard.JustDown(keyF)) {
+            this.shoot(this.player1Rocket.x + this.player1Rocket.width, this.player1Rocket.y);
+        }
+        if (Phaser.Input.Keyboard.JustDown(keyD)) {
             this.shoot(this.player1Rocket.x + this.player1Rocket.width, this.player1Rocket.y);
         }
 
@@ -149,10 +123,76 @@ class Wave9 extends Phaser.Scene {
                 this.shipExplode(this.ship04);
                 this.totalEnemyLives -= 1;
             }
+            else if (this.checkCollision(bull, this.ship05)) {
+                bull.setActive(false);
+                bull.setVisible(false);
+                this.shipExplode(this.ship05);
+                this.totalEnemyLives -= 1;
+            }
+            else if (this.checkCollision(bull, this.ship06)) {
+                bull.setActive(false);
+                bull.setVisible(false);
+                this.shipExplode(this.ship06);
+                this.totalEnemyLives -= 1;
+            }
+            else if (this.checkCollision(bull, this.hammerhead)) {
+                bull.setActive(false);
+                bull.setVisible(false);
+                this.shipExplode(this.hammerhead);
+                this.totalEnemyLives -= 1;
+            }
+            else if (this.checkCollision(bull, this.hammerhead2)) {
+                bull.setActive(false);
+                bull.setVisible(false);
+                this.shipExplode(this.hammerhead2);
+                this.totalEnemyLives -= 1;
+            }
+            else if (this.checkCollision(bull, this.wavyShip1)) {
+                bull.setActive(false);
+                bull.setVisible(false);
+                this.shipExplode(this.wavyShip1);
+                this.totalEnemyLives -= 1;
+            }
+            else if (this.checkCollision(bull, this.wavyShip2)) {
+                bull.setActive(false);
+                bull.setVisible(false);
+                this.shipExplode(this.wavyShip2);
+                this.totalEnemyLives -= 1;
+            }
+            else if (this.checkCollision(bull, this.wavyShip3)) {
+                bull.setActive(false);
+                bull.setVisible(false);
+                this.shipExplode(this.wavyShip3);
+                this.totalEnemyLives -= 1;
+            }
+            else if (this.checkCollision(bull, this.wavyShip4)) {
+                bull.setActive(false);
+                bull.setVisible(false);
+                this.shipExplode(this.wavyShip4);
+                this.totalEnemyLives -= 1;
+            }
             else if (this.checkCollision(bull, this.helicopter)) {
                 bull.setActive(false);
                 bull.setVisible(false);
                 this.helicopter.health -= 1;
+                this.totalEnemyLives -= 1;
+            }
+            else if (this.checkCollision(bull, this.helicopter2)) {
+                bull.setActive(false);
+                bull.setVisible(false);
+                this.helicopter2.health -= 1;
+                this.totalEnemyLives -= 1;
+            }
+            else if (this.checkCollision(bull, this.helicopter3)) {
+                bull.setActive(false);
+                bull.setVisible(false);
+                this.helicopter3.health -= 1;
+                this.totalEnemyLives -= 1;
+            }
+            else if (this.checkCollision(bull, this.helicopter4)) {
+                bull.setActive(false);
+                bull.setVisible(false);
+                this.helicopter4.health -= 1;
                 this.totalEnemyLives -= 1;
             }
 
@@ -168,7 +208,30 @@ class Wave9 extends Phaser.Scene {
             this.ship02.update();
             this.ship03.update();
             this.ship04.update();
+            this.ship05.update();
+            this.ship06.update();
+            this.wavyShip1.update();
+            this.wavyShip2.update();
+            this.wavyShip3.update();
+            this.wavyShip4.update();
             this.helicopter.update();
+            this.helicopter2.update();
+            this.helicopter3.update();
+            this.helicopter4.update();
+            this.hammerhead.update();
+            this.hammerhead2.update();
+            if (!this.hammerhead.active) {
+                let randInt = Math.floor((Math.random() * 200));
+                if (randInt == 20) {
+                    this.hammerhead.active = true;
+                }
+            }
+            if (!this.hammerhead2.active) {
+                let randInt = Math.floor((Math.random() * 200));
+                if (randInt == 20) {
+                    this.hammerhead2.active = true;
+                }
+            }
         }
 
     }
@@ -178,7 +241,15 @@ class Wave9 extends Phaser.Scene {
         if (bullet) {
             bullet.setActive(true);
             bullet.setVisible(true);
-            bullet.body.velocity.x = 200;
+            bullet.body.velocity.x = 200 + game.settings.bulletSpeed;
+            let upOrDown = Math.floor(Math.random() * 10) % 2;
+            let randOffset = Math.random();
+            if (upOrDown == 1) {
+                bullet.body.velocity.y = game.settings.sprayMagnitude * randOffset;
+            }
+            else {
+                bullet.body.velocity.y = game.settings.sprayMagnitude * randOffset * -1;
+            }
         }
     }
 

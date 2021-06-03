@@ -15,7 +15,7 @@ class Helicopter extends Phaser.GameObjects.Sprite {
             this.setActive(false);
             this.setVisible(false);
         }
-        this.x -= this.moveSpeed;
+        this.x -= (this.moveSpeed * game.settings.speedMultiplier);
 
         // wrap around
 

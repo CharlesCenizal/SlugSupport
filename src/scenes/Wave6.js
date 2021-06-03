@@ -28,7 +28,6 @@ class Wave6 extends Phaser.Scene {
     // adding the menu
     create() {
         // Debug line
-        console.log("On wave 4");
         this.totalEnemyLives = 19;
 
         this.bullets = this.physics.add.group({
@@ -49,6 +48,7 @@ class Wave6 extends Phaser.Scene {
 
         // define keys
         keyF = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.F);
+        keyD = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
         keyR = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.R);
         keyLEFT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.LEFT);
         keyRIGHT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.RIGHT);
@@ -66,38 +66,6 @@ class Wave6 extends Phaser.Scene {
             frameRate: 30
         });
 
-        // keeping score
-        this.p1Score = 0;
-
-        // display the score
-
-        let scoreConfig =
-        {
-          fontFamily: 'Times',
-          fontSize: '32px',
-          backgroundColor: '#4B0082',
-          color: '#ADD8E6',
-          align: 'right',
-          padding:
-          {
-              top: 10,
-              bottom: 10,
-          },
-          fixedWidth: 0
-        }
-        this.scoreLeft = this.add.text(borderUISize + borderPadding, borderUISize + borderPadding * 2, this.p1Score, scoreConfig);
-
-        // game over
-        this.gameOver = false;
-
-        // 60 second play clock
-
-        scoreConfig.fixedWidth = 0;
-
-
-        this.difficultyTimer = 0;
-        this.timer = 0;
-        this.counter = 0;
     }
 
     // update
@@ -106,13 +74,11 @@ class Wave6 extends Phaser.Scene {
       if (this.totalEnemyLives == 0) {
           this.scene.start("WaveClearMenuScene");
       }
-        this.timer += delta;
-        while (this.timer > 1000) {
-            this.scoreLeft.text = parseInt(this.scoreLeft.text) + 10;
-            this.timer -= 1000;
-        }
 
         if (Phaser.Input.Keyboard.JustDown(keyF)) {
+            this.shoot(this.player1Rocket.x + this.player1Rocket.width, this.player1Rocket.y);
+        }
+        if (Phaser.Input.Keyboard.JustDown(keyD)) {
             this.shoot(this.player1Rocket.x + this.player1Rocket.width, this.player1Rocket.y);
         }
 
@@ -181,7 +147,15 @@ class Wave6 extends Phaser.Scene {
         if (bullet) {
             bullet.setActive(true);
             bullet.setVisible(true);
-            bullet.body.velocity.x = 200;
+            bullet.body.velocity.x = 200 + game.settings.bulletSpeed;
+            let upOrDown = Math.floor(Math.random() * 10) % 2;
+            let randOffset = Math.random();
+            if (upOrDown == 1) {
+                bullet.body.velocity.y = game.settings.sprayMagnitude * randOffset;
+            }
+            else {
+                bullet.body.velocity.y = game.settings.sprayMagnitude * randOffset * -1;
+            }
         }
     }
 

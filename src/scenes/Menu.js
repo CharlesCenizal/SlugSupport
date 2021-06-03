@@ -65,8 +65,12 @@ class Menu extends Phaser.Scene {
         if (Phaser.Input.Keyboard.JustDown(keyLEFT)) {
             game.settings =
             {
-                currWave: 8,
-                turretSpeed: 7,
+                currWave: 1,
+                turretSpeed: 4,
+                speedMultiplier: 1,
+                extraLives: 0,
+                bulletSpeed: 0,
+                sprayMagnitude: 0,
                 maxAmmo: 1000 // High ammo for now
             }
             this.sound.play('sfx_select');
@@ -78,7 +82,11 @@ class Menu extends Phaser.Scene {
             game.settings =
             {
                 currWave: 1,
-                turretSpeed: 7,
+                turretSpeed: 4,
+                speedMultiplier: 1,
+                extraLives: 0,
+                bulletSpeed: 0,
+                sprayMagnitude: 0,
                 maxAmmo: 1000 // High ammo for now
             }
             this.sound.play('sfx_select');

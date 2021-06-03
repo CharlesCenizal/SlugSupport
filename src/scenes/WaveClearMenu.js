@@ -35,12 +35,16 @@ class WaveClearMenu extends Phaser.Scene {
 
         menuConfig.backgorundColor = "#4B0082";
         menuConfig.color = '#ADD8E6';
-        this.add.text(game.config.width / 2, game.config.height / 2 + borderUISize + borderPadding, 'Press ← to upgrade movement', menuConfig).setOrigin(0.5);
-        this.add.text(game.config.width / 2, game.config.height / 2 + borderUISize + borderPadding + 100, 'Press → to upgrade bullets', menuConfig).setOrigin(0.5);
+        this.add.text(game.config.width / 2, game.config.height / 2 + borderUISize + borderPadding, 'Press Q to upgrade movement', menuConfig).setOrigin(0.5);
+        this.add.text(game.config.width / 2, game.config.height / 2 + borderUISize + borderPadding + 60, 'Press W to upgrade bullets', menuConfig).setOrigin(0.5);
+        this.add.text(game.config.width / 2, game.config.height / 2 + borderUISize + borderPadding + 120, 'Press E to upgrade bullet speed', menuConfig).setOrigin(0.5);
+        this.add.text(game.config.width / 2, game.config.height / 2 + borderUISize + borderPadding + 180, 'Press R to upgrade bullet spray', menuConfig).setOrigin(0.5);
 
         // define keys
-        keyLEFT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.LEFT);
-        keyRIGHT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.RIGHT);
+        keyQ = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.Q);
+        keyW = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
+        keyE = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.E);
+        keyR= this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.R);
 
         this.music = this.sound.add('music');
 
@@ -61,19 +65,61 @@ class WaveClearMenu extends Phaser.Scene {
     }
     update() {
         //this.music.play(musicConfig);
-        if (Phaser.Input.Keyboard.JustDown(keyLEFT)) {
+        if (Phaser.Input.Keyboard.JustDown(keyQ)) {
+            game.settings.speedMultiplier += .03;
             game.settings.currWave += 1;
             game.settings.turretSpeed += 1;
             this.sound.play('sfx_select');
             // This line of code is for debugging
             console.log("From Select -> now on wave " + game.settings.currWave);
+            if (game.settings.currWave >= 10) {
+                this.scene.start("wave10Scene");
+                if (game.settings.currWave % 10 == 0 && game.settings.currWave != 10) {
+                    game.settings.extraLives += 1;
+                }
+            }
             this.scene.start("wave" + game.settings.currWave + "Scene");
         }
-        if (Phaser.Input.Keyboard.JustDown(keyRIGHT)) {
+        if (Phaser.Input.Keyboard.JustDown(keyW)) {
+            game.settings.speedMultiplier += .03;
             game.settings.currWave += 1;
             game.settings.maxAmmo += 1;
             this.sound.play('sfx_select');
+            if (game.settings.currWave >= 10) {
+                this.scene.start("wave10Scene");
+                if (game.settings.currWave % 10 == 0 && game.settings.currWave != 10) {
+                    game.settings.extraLives += 1;
+                }
+            }
             this.scene.start("wave" + game.settings.currWave + "Scene");
+        }
+        if (Phaser.Input.Keyboard.JustDown(keyE)) {
+            game.settings.speedMultiplier += .03;
+            game.settings.currWave += 1;
+            game.settings.bulletSpeed += 25;
+            this.sound.play('sfx_select');
+            if (game.settings.currWave >= 10) {
+                this.scene.start("wave10Scene");
+                if (game.settings.currWave % 10 == 0 && game.settings.currWave != 10) {
+                    game.settings.extraLives += 1;
+                }
+            }
+            //this.scene.start("wave" + game.settings.currWave + "Scene");
+            this.scene.start("wave1Scene");
+        }
+        if (Phaser.Input.Keyboard.JustDown(keyR)) {
+            game.settings.speedMultiplier += .03;
+            game.settings.currWave += 1;
+            game.settings.sprayMagnitude += 5;
+            this.sound.play('sfx_select');
+            if (game.settings.currWave >= 10) {
+                this.scene.start("wave10Scene");
+                if (game.settings.currWave % 10 == 0 && game.settings.currWave != 10) {
+                    game.settings.extraLives += 1;
+                }
+            }
+            //this.scene.start("wave" + game.settings.currWave + "Scene");
+            this.scene.start("wave1Scene");
         }
     }
 

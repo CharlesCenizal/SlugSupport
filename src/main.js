@@ -51,4 +51,4 @@ let starSpeed = 3;
 
 // reserve keyboard bindings
 
-let keyF, keyR, keyLEFT, keyRIGHT, keyUP, keyDOWN;
+let keyF, keyR, keyLEFT, keyRIGHT, keyUP, keyDOWN, keyD, keyQ, keyW, keyE;

@@ -10,7 +10,7 @@ class Spaceship extends Phaser.GameObjects.Sprite {
 
     update() {
         // move spaceshift left
-        this.x -= this.tempSpeed;
+        this.x -= (this.tempSpeed * game.settings.speedMultiplier);
 
         // wrap around
 

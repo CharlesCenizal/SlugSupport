@@ -14,7 +14,7 @@ class WavyShip extends Phaser.GameObjects.Sprite {
     update() {
         this.clock += this.waveSpeed;
 
-        this.x -= this.moveSpeed;
+        this.x -= (this.moveSpeed * game.settings.speedMultiplier);
         this.y = Math.sin(this.clock) * this.waveMag + this.randheight;
 
         
