@@ -71,8 +71,9 @@ class Menu extends Phaser.Scene {
                 extraLives: 0,
                 bulletSpeed: 0,
                 sprayMagnitude: 0,
-                maxAmmo: 1000 // High ammo for now
-            }
+                maxAmmo: 1000, // High ammo for now
+                health: 100
+            };
             this.sound.play('sfx_select');
             // This line of code is for debugging
             console.log("now on wave " + game.settings.currWave);
@@ -87,8 +88,9 @@ class Menu extends Phaser.Scene {
                 extraLives: 0,
                 bulletSpeed: 0,
                 sprayMagnitude: 0,
-                maxAmmo: 1000 // High ammo for now
-            }
+                maxAmmo: 1000, // High ammo for now
+                health: 100
+            };
             this.sound.play('sfx_select');
             this.scene.start("wave" + game.settings.currWave + "Scene");
         }
