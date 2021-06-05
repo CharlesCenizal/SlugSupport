@@ -27,6 +27,20 @@ class Wave6 extends Phaser.Scene {
     }
     // adding the menu
     create() {
+      let healthConfig =
+      {
+          fontFamily: 'Times',
+          fontSize: '18px',
+          backgroundColor: '#ffffff',
+          color: '#301934',
+          align: 'right',
+          padding:
+          {
+              top: 0,
+              bottom: 0,
+          },
+          fixedWidth: 0
+      }
         // Debug line
         this.totalEnemyLives = 19;
 
@@ -39,7 +53,7 @@ class Wave6 extends Phaser.Scene {
 
         this.player1Rocket = new Rocket(this, 20, game.config.height / 2, 'rocket', game.settings.turretSpeed).setOrigin(0.5, 0.5);
         // add spaceshift (x3)
-
+        this.add.text(barx, bary-36, 'Health',healthConfig);
         this.hammerhead = new Hammerhead(this, game.config.width, borderUISize * 6 + borderPadding * 4, 'spaceship', 0, 10, 3).setOrigin(0, 0);
         this.wavyShip1 = new WavyShip(this, game.config.width, borderUISize * 6 + borderPadding * 4, 'aircraft', 0, 10, 40, 2).setOrigin(0, 0);
         this.wavyShip2 = new WavyShip(this, game.config.width, borderUISize * 6 + borderPadding * 4, 'aircraft', 0, 10, 40, 2).setOrigin(0, 0);
