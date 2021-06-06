@@ -23,7 +23,7 @@ class WavyShip extends Phaser.GameObjects.Sprite {
 
         // wrap around
 
-        if (this.x <= 0 - this.width && this.lifePoints > 0) {
+        if (this.x <= 95 - this.width && this.lifePoints > 0) {
             this.reset();
         }
     }

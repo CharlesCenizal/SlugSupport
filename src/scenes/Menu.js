@@ -4,7 +4,7 @@ class Menu extends Phaser.Scene {
     }
     preload() {
 
-        this.load.image('map_1', './assets/game_title.png')
+        this.load.image('menu', './assets/MenuScreen.png')
         this.load.audio('sfx_select', './assets/discord-leave.mp3');
         this.load.audio('sfx_explosion', './assets/assets_explosion38.wav');
         this.load.audio('sfx_rocket', './assets/assets_rocket_shot.wav');
@@ -28,7 +28,7 @@ class Menu extends Phaser.Scene {
             fixedWidth: 0
         }
         // show menu text
-        this.map_1 = this.add.tileSprite(0, 0, game.config.width, game.config.height, 'map_1').setOrigin(0, 0);
+        this.map_1 = this.add.tileSprite(0, 0, game.config.width, game.config.height, 'menu').setOrigin(0, 0);
         this.add.text(game.config.width / 2, game.config.height / 2 - 160, 'Slug Support: Anti Air Edition',menuConfig).setOrigin(0.5);
         this.add.text(game.config.width / 2, game.config.height / 2 - 96, '',menuConfig).setOrigin(0.5);
         this.add.text(game.config.width / 2, game.config.height / 2 - 32, '',menuConfig).setOrigin(0.5);
