@@ -72,27 +72,27 @@ class Wave10 extends Phaser.Scene {
         // add spaceshift (x3)
         this.add.text(barx, bary-36, 'Health',healthConfig);
         this.healthLeft = this.add.text(barx, bary, this.game.settings.health, healthConfig2);
-        this.ship01 = new Spaceship(this, game.config.width + borderUISize * 6, 25, 'e1', 0, 30, 2 + game.settings.extraLives).setOrigin(0, 0);
-        this.ship02 = new Spaceship(this, game.config.width + borderUISize * 3, 50, 'e1', 0, 20, 2 + game.settings.extraLives).setOrigin(0, 0);
-        this.ship03 = new Spaceship(this, game.config.width + borderUISize * 3, 75, 'e1', 0, 20, 2 + game.settings.extraLives).setOrigin(0, 0);
-        this.ship04 = new Spaceship(this, game.config.width + borderUISize * 6, 100, 'e1', 0, 30, 2 + game.settings.extraLives).setOrigin(0, 0);
-        this.ship05 = new Spaceship(this, game.config.width + borderUISize * 3, 125, 'e1', 0, 20, 2 + game.settings.extraLives).setOrigin(0, 0);
-        this.ship06 = new Spaceship(this, game.config.width + borderUISize * 3, 150, 'e1', 0, 20, 2 + game.settings.extraLives).setOrigin(0, 0);
-        this.ship07 = new Spaceship(this, game.config.width + borderUISize * 3, 175, 'e1', 0, 20, 2 + game.settings.extraLives).setOrigin(0, 0);
-        this.hammerhead = new Hammerhead(this, game.config.width, borderUISize * 6 + borderPadding * 4, 'spaceship', 0, 10, 4 + game.settings.extraLives).setOrigin(0, 0);
-        this.hammerhead2 = new Hammerhead(this, game.config.width, borderUISize * 6 + borderPadding * 4, 'spaceship', 0, 10, 4 + game.settings.extraLives).setOrigin(0, 0);
-        this.hammerhead3 = new Hammerhead(this, game.config.width, borderUISize * 6 + borderPadding * 4, 'spaceship', 0, 10, 4 + game.settings.extraLives).setOrigin(0, 0);
-        this.hammerhead4 = new Hammerhead(this, game.config.width, borderUISize * 6 + borderPadding * 4, 'spaceship', 0, 10, 4 + game.settings.extraLives).setOrigin(0, 0);
-        this.wavyShip1 = new WavyShip(this, game.config.width, borderUISize * 6 + borderPadding * 4, 'aircraft', 0, 10, 50, 2 + game.settings.extraLives).setOrigin(0, 0);
-        this.wavyShip2 = new WavyShip(this, game.config.width, borderUISize * 6 + borderPadding * 4, 'aircraft', 0, 10, 50, 2 + game.settings.extraLives).setOrigin(0, 0);
-        this.wavyShip3 = new WavyShip(this, game.config.width, borderUISize * 6 + borderPadding * 4, 'aircraft', 0, 10, 50, 2 + game.settings.extraLives).setOrigin(0, 0);
-        this.wavyShip4 = new WavyShip(this, game.config.width, borderUISize * 6 + borderPadding * 4, 'aircraft', 0, 10, 50, 2 + game.settings.extraLives).setOrigin(0, 0);
-        this.wavyShip5 = new WavyShip(this, game.config.width, borderUISize * 6 + borderPadding * 4, 'aircraft', 0, 10, 50, 2 + game.settings.extraLives).setOrigin(0, 0);
-        this.wavyShip6 = new WavyShip(this, game.config.width, borderUISize * 6 + borderPadding * 4, 'aircraft', 0, 10, 50, 2 + game.settings.extraLives).setOrigin(0, 0);
-        this.helicopter = new Helicopter(this, game.config.width, 80, 'helicopter', 0, 10, 3, 2 + game.settings.extraLives).setOrigin(0, 0);
-        this.helicopter2 = new Helicopter(this, game.config.width, 160, 'helicopter', 0, 10, 3, 2 + game.settings.extraLives).setOrigin(0, 0);
-        this.helicopter3 = new Helicopter(this, game.config.width, 240, 'helicopter', 0, 10, 3, 2 + game.settings.extraLives).setOrigin(0, 0);
-        this.helicopter4 = new Helicopter(this, game.config.width, 320, 'helicopter', 0, 10, 3, 2 + game.settings.extraLives).setOrigin(0, 0);
+        this.ship01 = new Spaceship(this, game.config.width + Math.floor(Math.random() * 300), Math.floor(Math.random() * (game.config.height - 34)), 'e1', 0, 30, 2 + game.settings.extraLives).setOrigin(0, 0);
+        this.ship02 = new Spaceship(this, game.config.width + Math.floor(Math.random() * 300), Math.floor(Math.random() * (game.config.height - 34)), 'e1', 0, 20, 2 + game.settings.extraLives).setOrigin(0, 0);
+        this.ship03 = new Spaceship(this, game.config.width + Math.floor(Math.random() * 300), Math.floor(Math.random() * (game.config.height - 34)), 'e1', 0, 20, 2 + game.settings.extraLives).setOrigin(0, 0);
+        this.ship04 = new Spaceship(this, game.config.width + Math.floor(Math.random() * 300), Math.floor(Math.random() * (game.config.height - 34)), 'e1', 0, 30, 2 + game.settings.extraLives).setOrigin(0, 0);
+        this.ship05 = new Spaceship(this, game.config.width + Math.floor(Math.random() * 300), Math.floor(Math.random() * (game.config.height - 34)), 'e1', 0, 20, 2 + game.settings.extraLives).setOrigin(0, 0);
+        this.ship06 = new Spaceship(this, game.config.width + Math.floor(Math.random() * 300), Math.floor(Math.random() * (game.config.height - 34)), 'e1', 0, 20, 2 + game.settings.extraLives).setOrigin(0, 0);
+        this.ship07 = new Spaceship(this, game.config.width, Math.floor(Math.random() * (game.config.height - 34)), 'e1', 0, 20, 2 + game.settings.extraLives).setOrigin(0, 0);
+        this.hammerhead = new Hammerhead(this, game.config.width + Math.floor(Math.random() * 300), Math.floor(Math.random() * (game.config.height - 34)), 'spaceship', 0, 10, 4 + game.settings.extraLives).setOrigin(0, 0);
+        this.hammerhead2 = new Hammerhead(this, game.config.width + Math.floor(Math.random() * 300), Math.floor(Math.random() * (game.config.height - 34)), 'spaceship', 0, 10, 4 + game.settings.extraLives).setOrigin(0, 0);
+        this.hammerhead3 = new Hammerhead(this, game.config.width + Math.floor(Math.random() * 300), Math.floor(Math.random() * (game.config.height - 34)), 'spaceship', 0, 10, 4 + game.settings.extraLives).setOrigin(0, 0);
+        this.hammerhead4 = new Hammerhead(this, game.config.width + Math.floor(Math.random() * 300), Math.floor(Math.random() * (game.config.height - 34)), 'spaceship', 0, 10, 4 + game.settings.extraLives).setOrigin(0, 0);
+        this.wavyShip1 = new WavyShip(this, game.config.width + Math.floor(Math.random() * 300), Math.floor(Math.random() * (game.config.height - 65)), 'aircraft', 0, 10, 50, 2 + game.settings.extraLives).setOrigin(0, 0);
+        this.wavyShip2 = new WavyShip(this, game.config.width + Math.floor(Math.random() * 300), Math.floor(Math.random() * (game.config.height - 65)), 'aircraft', 0, 10, 50, 2 + game.settings.extraLives).setOrigin(0, 0);
+        this.wavyShip3 = new WavyShip(this, game.config.width + Math.floor(Math.random() * 300), Math.floor(Math.random() * (game.config.height - 65)), 'aircraft', 0, 10, 50, 2 + game.settings.extraLives).setOrigin(0, 0);
+        this.wavyShip4 = new WavyShip(this, game.config.width + Math.floor(Math.random() * 300), Math.floor(Math.random() * (game.config.height - 65)), 'aircraft', 0, 10, 50, 2 + game.settings.extraLives).setOrigin(0, 0);
+        this.wavyShip5 = new WavyShip(this, game.config.width + Math.floor(Math.random() * 300), Math.floor(Math.random() * (game.config.height - 65)), 'aircraft', 0, 10, 50, 2 + game.settings.extraLives).setOrigin(0, 0);
+        this.wavyShip6 = new WavyShip(this, game.config.width, Math.floor(Math.random() * (game.config.height - 65)), 'aircraft', 0, 10, 50, 2 + game.settings.extraLives).setOrigin(0, 0);
+        this.helicopter = new Helicopter(this, game.config.width + Math.floor(Math.random() * 300), Math.floor(Math.random() * (game.config.height - 65)), 'helicopter', 0, 10, 3, 2 + game.settings.extraLives).setOrigin(0, 0);
+        this.helicopter2 = new Helicopter(this, game.config.width + Math.floor(Math.random() * 300), Math.floor(Math.random() * (game.config.height - 65)), 'helicopter', 0, 10, 3, 2 + game.settings.extraLives).setOrigin(0, 0);
+        this.helicopter3 = new Helicopter(this, game.config.width + Math.floor(Math.random() * 300), Math.floor(Math.random() * (game.config.height - 65)), 'helicopter', 0, 10, 3, 2 + game.settings.extraLives).setOrigin(0, 0);
+        this.helicopter4 = new Helicopter(this, game.config.width, Math.floor(Math.random() * (game.config.height - 65)), 'helicopter', 0, 10, 3, 2 + game.settings.extraLives).setOrigin(0, 0);
 
         // define keys
         keyF = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.F);

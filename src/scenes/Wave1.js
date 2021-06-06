@@ -86,8 +86,8 @@ class Wave1 extends Phaser.Scene {
         // Health Number itself
         this.healthLeft = this.add.text(barx, bary, this.game.settings.health, healthConfig2);
         //this.text.addColor('301934');
-        this.ship01 = new Spaceship(this, game.config.width + borderUISize * 6, borderUISize * 4+75, 'e1', 0, 30, 2).setOrigin(0, 0);
-        this.ship02 = new Spaceship(this, game.config.width + borderUISize * 3, borderUISize * 5 + borderPadding * 2+75, 'e1', 0, 20, 2).setOrigin(0, 0);
+        this.ship01 = new Spaceship(this, game.config.width, Math.floor(Math.random() * (game.config.height - 34)), 'e1', 0, 30, 2).setOrigin(0, 0);
+        this.ship02 = new Spaceship(this, game.config.width + Math.floor(Math.random() * 300), Math.floor(Math.random() * (game.config.height - 34)), 'e1', 0, 20, 2).setOrigin(0, 0);
 
         // define keys
         keyF = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.F);

@@ -4,7 +4,7 @@ class WavyShip extends Phaser.GameObjects.Sprite {
         scene.add.existing(this); // add to existing scene
         this.points = pointValue; // store point value
         this.moveSpeed = 4;       // pixels per frame
-        this.clock = 0;
+        this.clock = Math.floor(Math.random() * 10);
         this.waveSpeed = 0.05;
         this.randheight = Math.floor(Math.random() * game.config.height);
         this.lifePoints = lives;
@@ -32,7 +32,7 @@ class WavyShip extends Phaser.GameObjects.Sprite {
         this.setActive(true);
         this.setVisible(true);
         this.x = game.config.width;
-        this.randheight = Math.floor(Math.random() * game.config.height);
+        this.randheight = Math.floor(Math.random() * (game.config.height - 65));
         if (this.randheight < 34) {
             this.randheight = 34;
         }

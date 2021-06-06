@@ -72,15 +72,15 @@ class Wave7 extends Phaser.Scene {
         // add spaceshift (x3)
         this.add.text(barx, bary-36, 'Health',healthConfig);
         this.healthLeft = this.add.text(barx, bary, this.game.settings.health, healthConfig2);
-        this.ship01 = new Spaceship(this, game.config.width + borderUISize * 6, borderUISize * 4-75, 'e1', 0, 30, 2).setOrigin(0, 0);
-        this.ship02 = new Spaceship(this, game.config.width + borderUISize * 3, borderUISize * 5 + borderPadding * 2-75, 'e1', 0, 20, 2).setOrigin(0, 0);
-        this.ship03 = new Spaceship(this, game.config.width + borderUISize * 3, borderUISize * 5 + borderPadding * 2-75, 'e1', 0, 20, 2).setOrigin(0, 0);
-        this.hammerhead = new Hammerhead(this, game.config.width, borderUISize * 6 + borderPadding * 4, 'spaceship', 0, 10, 3).setOrigin(0, 0);
-        this.wavyShip1 = new WavyShip(this, game.config.width, borderUISize * 6 + borderPadding * 4, 'aircraft', 0, 10, 45, 2).setOrigin(0, 0);
-        this.wavyShip2 = new WavyShip(this, game.config.width, borderUISize * 6 + borderPadding * 4, 'aircraft', 0, 10, 45, 2).setOrigin(0, 0);
-        this.wavyShip3 = new WavyShip(this, game.config.width, borderUISize * 6 + borderPadding * 4, 'aircraft', 0, 10, 45, 2).setOrigin(0, 0);
-        this.helicopter = new Helicopter(this, game.config.width, borderUISize * 6 + borderPadding * 4-75, 'helicopter', 0, 10, 3, 2).setOrigin(0, 0);
-        this.helicopter2 = new Helicopter(this, game.config.width, borderUISize * 6 + borderPadding * 4-20, 'helicopter', 0, 10, 3, 2).setOrigin(0, 0);
+        this.ship01 = new Spaceship(this, game.config.width + Math.floor(Math.random() * 300), Math.floor(Math.random() * (game.config.height - 34)), 'e1', 0, 30, 2).setOrigin(0, 0);
+        this.ship02 = new Spaceship(this, game.config.width + Math.floor(Math.random() * 300), Math.floor(Math.random() * (game.config.height - 34)), 'e1', 0, 20, 2).setOrigin(0, 0);
+        this.ship03 = new Spaceship(this, game.config.width, Math.floor(Math.random() * (game.config.height - 34)), 'e1', 0, 20, 2).setOrigin(0, 0);
+        this.hammerhead = new Hammerhead(this, game.config.width, Math.floor(Math.random() * (game.config.height - 34)), 'spaceship', 0, 10, 3).setOrigin(0, 0);
+        this.wavyShip1 = new WavyShip(this, game.config.width + Math.floor(Math.random() * 300), Math.floor(Math.random() * (game.config.height - 65)), 'aircraft', 0, 10, 45, 2).setOrigin(0, 0);
+        this.wavyShip2 = new WavyShip(this, game.config.width + Math.floor(Math.random() * 300), Math.floor(Math.random() * (game.config.height - 65)), 'aircraft', 0, 10, 45, 2).setOrigin(0, 0);
+        this.wavyShip3 = new WavyShip(this, game.config.width, Math.floor(Math.random() * (game.config.height - 65)), 'aircraft', 0, 10, 45, 2).setOrigin(0, 0);
+        this.helicopter = new Helicopter(this, game.config.width + Math.floor(Math.random() * 300), Math.floor(Math.random() * (game.config.height - 65)), 'helicopter', 0, 10, 3, 2).setOrigin(0, 0);
+        this.helicopter2 = new Helicopter(this, game.config.width, Math.floor(Math.random() * (game.config.height - 65)), 'helicopter', 0, 10, 3, 2).setOrigin(0, 0);
 
         // define keys
         keyF = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.F);
