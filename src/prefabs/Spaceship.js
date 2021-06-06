@@ -16,12 +16,16 @@ class Spaceship extends Phaser.GameObjects.Sprite {
 
         if (this.x <= 0 - this.width && this.lifePoints > 0) {
             this.reset();
+            //this.game.settings.health -= 1;
+            //console.log(this.game.settings.health);
         }
     }
     // position reset
     reset() {
         this.setActive(true);
         this.setVisible(true);
+        //this.game.settings.health -= 1;
+        //console.log(this.game.settings.health);
         this.tempSpeed = Math.ceil(Math.random() * 2) + this.moveSpeed;
         //console.log(this.moveSpeed);
         this.x = game.config.width;
@@ -31,7 +35,7 @@ class Spaceship extends Phaser.GameObjects.Sprite {
         }
         this.y = randheight;
     }
-    
+
     takeDamage() {
         this.lifePoints -= 1;
     }

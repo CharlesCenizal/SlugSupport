@@ -33,6 +33,8 @@ class Helicopter extends Phaser.GameObjects.Sprite {
             this.setVisible(true);
         }
         this.health = this.hitpoints;
+        //this.game.settings.health -= 1;
+        //console.log(this.game.settings.health);
         //console.log(this.moveSpeed);
         this.x = game.config.width;
         let randheight = Math.floor(Math.random() * game.config.height);

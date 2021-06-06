@@ -116,7 +116,7 @@ class Wave1 extends Phaser.Scene {
         if (Phaser.Input.Keyboard.JustDown(keyD)) {
             this.shoot(this.player1Rocket.x + this.player1Rocket.width, this.player1Rocket.y);
         }
-        
+
 
         this.bullets.children.each(function(bull) {
             if (bull.active) {
@@ -146,7 +146,33 @@ class Wave1 extends Phaser.Scene {
             this.player1Rocket.update();
             // update ships
             this.ship01.update();
+            //this.game.settings.health -= 1;
+            //console.log(this.game.settings.health);
+            console.log("ship01 pos");
+            //console.log(this.ship01.x);
+            /*if(1 == 1)
+            {
+              console.log("swag");
+            }*/
+
+
             this.ship02.update();
+
+        }
+        // REDUCING THE HEALTH
+        if(parseInt(this.ship01.x) == 0)
+        {
+          //console.log("goteem");
+          console.log(this.ship01.x);
+          this.game.settings.health -= 1;
+          console.log("the health is now:" + this.game.settings.health);
+        }
+        if(parseInt(this.ship02.x) == 0)
+        {
+          //console.log("goteem");
+          console.log(this.ship02.x);
+          this.game.settings.health -= 1;
+          console.log("the health is now:" + this.game.settings.health);
         }
 
     }
@@ -190,4 +216,10 @@ class Wave1 extends Phaser.Scene {
         ship.setActive(false);
         ship.takeDamage();
     }
+    /* doesn't work
+    getPosition(ship)
+    {
+      return this.ship.x;
+    }
+    */
 }
