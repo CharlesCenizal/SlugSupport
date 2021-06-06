@@ -87,7 +87,8 @@ class Wave10 extends Phaser.Scene {
         keyRIGHT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.RIGHT);
         keyUP = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.UP);
         keyDOWN = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.DOWN);
-
+        // developer skip scene
+        keyM = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.M);
         // animation config
         this.anims.create({
             key: 'explode',
@@ -104,6 +105,12 @@ class Wave10 extends Phaser.Scene {
 
     // update
     update(time, delta,counter) {
+      // Developer Bypass to next wave
+      if (Phaser.Input.Keyboard.JustDown(KeyM))
+      {
+        game.settings.currWave += 1;
+        this.scene.start("wave" + game.settings.currWave + "Scene");
+      }
 
       if (this.totalEnemyLives == 0) {
           this.scene.start("WaveClearMenuScene");
