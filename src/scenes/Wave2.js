@@ -47,8 +47,8 @@ class Wave2 extends Phaser.Scene {
       }
         this.add.text(barx, bary-36, 'Health',healthConfig);
         // Debug line
-        this.totalEnemyLives = 8;
-
+        //this.totalEnemyLives = 8;
+        this.totalEnemyLives = 2;
         this.bullets = this.physics.add.group({
             defaultKey: 'bullet',
             maxSize: game.settings.maxAmmo
@@ -73,7 +73,7 @@ class Wave2 extends Phaser.Scene {
         keyUP = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.UP);
         keyDOWN = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.DOWN);
         // developer skip scene
-        keyM = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.M);
+
 
         // animation config
         this.anims.create({
@@ -95,13 +95,7 @@ class Wave2 extends Phaser.Scene {
 
     // update
     update(time, delta,counter) {
-        // Developer Bypass to next wave
-        if (Phaser.Input.Keyboard.JustDown(KeyM))
-        {
-          game.settings.currWave += 1;
-          this.scene.start("wave" + game.settings.currWave + "Scene");
-        }
-
+      
         if (this.totalEnemyLives == 0) {
             this.scene.start("WaveClearMenuScene");
         }

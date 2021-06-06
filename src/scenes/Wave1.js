@@ -55,8 +55,9 @@ class Wave1 extends Phaser.Scene {
 	     // middleShaddowCap.displayWidth = this.width;
       //  this.add.image(middleShaddowCap.x + middleShaddowCap.displayWidth, y, 'right-cap-shadow').setOrigin(0, 0.5);
         // Debug line
-        this.totalEnemyLives = 4;
 
+        //this.totalEnemyLives = 4;
+        this.totalEnemyLives = 2;
         this.bullets = this.physics.add.group({
             defaultKey: 'bullet',
             maxSize: game.settings.maxAmmo
@@ -80,8 +81,9 @@ class Wave1 extends Phaser.Scene {
         keyUP = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.UP);
         keyDOWN = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.DOWN);
         keyD = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
+
         // developer skip scene
-        keyM = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.M);
+
         // animation config
         this.anims.create({
             key: 'explode',
@@ -102,12 +104,7 @@ class Wave1 extends Phaser.Scene {
 
     // update
     update(time, delta,counter) {
-        // Developer Bypass to next wave
-        if (Phaser.Input.Keyboard.JustDown(KeyM))
-        {
-          game.settings.currWave += 1;
-          this.scene.start("wave" + game.settings.currWave + "Scene");
-        }
+
 
         if (this.totalEnemyLives == 0) {
             this.scene.start("WaveClearMenuScene");
@@ -119,6 +116,7 @@ class Wave1 extends Phaser.Scene {
         if (Phaser.Input.Keyboard.JustDown(keyD)) {
             this.shoot(this.player1Rocket.x + this.player1Rocket.width, this.player1Rocket.y);
         }
+        
 
         this.bullets.children.each(function(bull) {
             if (bull.active) {
