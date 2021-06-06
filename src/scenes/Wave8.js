@@ -338,6 +338,7 @@ class Wave8 extends Phaser.Scene {
     shoot(x, y) {
         let bullet = this.bullets.get(x, y);
         if (bullet) {
+            this.sound.play('sfx_rocket');
             bullet.setActive(true);
             bullet.setVisible(true);
             bullet.body.velocity.x = 200 + game.settings.bulletSpeed;
@@ -353,7 +354,7 @@ class Wave8 extends Phaser.Scene {
     }
 
     checkCollision(rocket, ship) {
-        if (!rocket.active || !ship.active) {
+        if (!rocket.active || !ship.active || !ship.visible) {
           return false;
         }
         // simple AABB checking
