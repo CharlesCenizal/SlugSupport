@@ -172,6 +172,57 @@ class Wave5 extends Phaser.Scene {
             this.wavyShip3.update();
             this.helicopter.update();
         }
+        // REDUCING THE HEALTH
+        if(parseInt(this.helicopter.x) == 0)
+        {
+          //console.log("goteem");
+          console.log(this.helicopter.x);
+          this.game.settings.health -= 1;
+          console.log("helicopter the health is now:" + this.game.settings.health);
+        }
+        if(parseInt(this.ship01.x) == 0)
+        {
+          //console.log("goteem");
+          console.log(this.ship01.x);
+          this.game.settings.health -= 1;
+          console.log("1 the health is now:" + this.game.settings.health);
+        }
+        if(parseInt(this.ship02.x) == 0)
+        {
+          //console.log("goteem");
+          console.log(this.ship02.x);
+          this.game.settings.health -= 1;
+          console.log("2 the health is now:" + this.game.settings.health);
+        }
+        if(parseInt(this.ship03.x) == 0)
+        {
+          //console.log("goteem");
+          console.log(this.ship03.x);
+          this.game.settings.health -= 1;
+          console.log("3 the health is now:" + this.game.settings.health);
+        }
+        if(parseInt(this.wavyShip1.x) == 0)
+        {
+          //console.log("goteem");
+          console.log(this.wavyShip1.x);
+          this.game.settings.health -= 1;
+          console.log("wavyShip1 the health is now:" + this.game.settings.health);
+        }
+        if(parseInt(this.wavyShip2.x) == 0)
+        {
+          //console.log("goteem");
+          console.log(this.wavyShip2.x);
+          this.game.settings.health -= 1;
+          console.log("wavyShip2 the health is now:" + this.game.settings.health);
+        }
+        if(parseInt(this.wavyShip3.x) == 0)
+        {
+          //console.log("goteem");
+          console.log(this.wavyShip3.x);
+          this.game.settings.health -= 1;
+          console.log("wavyShip3 the health is now:" + this.game.settings.health);
+        }
+
 
     }
 

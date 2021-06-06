@@ -95,7 +95,7 @@ class Wave2 extends Phaser.Scene {
 
     // update
     update(time, delta,counter) {
-      
+
         if (this.totalEnemyLives == 0) {
             this.scene.start("WaveClearMenuScene");
         }
@@ -150,6 +150,35 @@ class Wave2 extends Phaser.Scene {
             this.ship02.update();
             this.ship03.update();
             this.ship04.update();
+        }
+        // REDUCING THE HEALTH
+        if(parseInt(this.ship01.x) == 0)
+        {
+          //console.log("goteem");
+          console.log(this.ship01.x);
+          this.game.settings.health -= 1;
+          console.log("1 the health is now:" + this.game.settings.health);
+        }
+        if(parseInt(this.ship02.x) == 0)
+        {
+          //console.log("goteem");
+          console.log(this.ship02.x);
+          this.game.settings.health -= 1;
+          console.log("2 the health is now:" + this.game.settings.health);
+        }
+        if(parseInt(this.ship03.x) == 0)
+        {
+          //console.log("goteem");
+          console.log(this.ship03.x);
+          this.game.settings.health -= 1;
+          console.log("3 the health is now:" + this.game.settings.health);
+        }
+        if(parseInt(this.ship04.x) == 0)
+        {
+          //console.log("goteem");
+          console.log(this.ship04.x);
+          this.game.settings.health -= 1;
+          console.log("4 the health is now:" + this.game.settings.health);
         }
 
     }
