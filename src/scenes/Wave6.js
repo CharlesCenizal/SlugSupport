@@ -44,6 +44,20 @@ class Wave6 extends Phaser.Scene {
           },
           fixedWidth: 0
       }
+      let healthConfig2 =
+      {
+          fontFamily: 'Times',
+          fontSize: '32px',
+          backgroundColor: '#8b0000',
+          color: '#ffcccb',
+          align: 'right',
+          padding:
+          {
+              top: 10,
+              bottom: 10,
+          },
+          fixedWidth: 0
+      }
         // Debug line
         //this.totalEnemyLives = 19;
         this.totalEnemyLives = 2;
@@ -57,6 +71,7 @@ class Wave6 extends Phaser.Scene {
         this.player1Rocket = new Rocket(this, 20, game.config.height / 2, 'rocket', game.settings.turretSpeed).setOrigin(0.5, 0.5);
         // add spaceshift (x3)
         this.add.text(barx, bary-36, 'Health',healthConfig);
+        this.healthLeft = this.add.text(barx, bary, this.game.settings.health, healthConfig2);
         this.hammerhead = new Hammerhead(this, game.config.width, borderUISize * 6 + borderPadding * 4, 'spaceship', 0, 10, 3).setOrigin(0, 0);
         this.wavyShip1 = new WavyShip(this, game.config.width, borderUISize * 6 + borderPadding * 4, 'aircraft', 0, 10, 40, 2).setOrigin(0, 0);
         this.wavyShip2 = new WavyShip(this, game.config.width, borderUISize * 6 + borderPadding * 4, 'aircraft', 0, 10, 40, 2).setOrigin(0, 0);
@@ -192,6 +207,7 @@ class Wave6 extends Phaser.Scene {
           this.game.settings.health -= 1;
           console.log("helicopter2 the health is now:" + this.game.settings.health);
         }
+        this.healthLeft.text = parseInt(this.game.settings.health);
 
     }
 

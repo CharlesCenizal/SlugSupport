@@ -45,7 +45,22 @@ class Wave2 extends Phaser.Scene {
           },
           fixedWidth: 0
       }
+      let healthConfig2 =
+      {
+          fontFamily: 'Times',
+          fontSize: '32px',
+          backgroundColor: '#8b0000',
+          color: '#ffcccb',
+          align: 'right',
+          padding:
+          {
+              top: 10,
+              bottom: 10,
+          },
+          fixedWidth: 0
+      }
         this.add.text(barx, bary-36, 'Health',healthConfig);
+        this.healthLeft = this.add.text(barx, bary, this.game.settings.health, healthConfig2);
         // Debug line
         //this.totalEnemyLives = 8;
         this.totalEnemyLives = 2;
@@ -180,6 +195,7 @@ class Wave2 extends Phaser.Scene {
           this.game.settings.health -= 1;
           console.log("4 the health is now:" + this.game.settings.health);
         }
+        this.healthLeft.text = parseInt(this.game.settings.health);
 
     }
 
