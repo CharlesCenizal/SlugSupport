@@ -28,7 +28,9 @@ class Wave2 extends Phaser.Scene {
     // adding the menu
     create() {
 
-
+      const bary = 40;
+      const barx = 10;
+      const width = 300;
       let healthConfig =
       {
           fontFamily: 'Times',
@@ -43,6 +45,7 @@ class Wave2 extends Phaser.Scene {
           },
           fixedWidth: 0
       }
+        this.add.text(barx, bary-36, 'Health',healthConfig);
         // Debug line
         this.totalEnemyLives = 8;
 
@@ -55,7 +58,7 @@ class Wave2 extends Phaser.Scene {
 
         this.player1Rocket = new Rocket(this, 20, game.config.height / 2, 'rocket', game.settings.turretSpeed).setOrigin(0.5, 0.5);
         // add spaceshift (x3)
-        this.add.text(barx, bary-36, 'Health',healthConfig);
+
         this.ship01 = new Spaceship(this, game.config.width + borderUISize * 6, borderUISize * 4-75, 'e1', 0, 30, 2).setOrigin(0, 0);
         this.ship02 = new Spaceship(this, game.config.width + borderUISize * 3, borderUISize * 5 + borderPadding * 2-75, 'e1', 0, 20, 2).setOrigin(0, 0);
         this.ship03 = new Spaceship(this, game.config.width, borderUISize * 6 + borderPadding * 4-75, 'e1', 0, 10, 2).setOrigin(0, 0);

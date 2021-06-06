@@ -27,6 +27,9 @@ class Wave9 extends Phaser.Scene {
     }
     // adding the menu
     create() {
+      const bary = 40;
+      const barx = 10;
+      const width = 300;
       let healthConfig =
       {
           fontFamily: 'Times',

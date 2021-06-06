@@ -45,6 +45,15 @@ class Wave1 extends Phaser.Scene {
             fixedWidth: 0
         }
         this.add.text(barx,bary-36,"Health");
+        const y = 24
+	      const x = 10
+
+	       // background shadow
+	      //const leftShadowCap = this.add.image(x, y, 'left-cap-shadow').setOrigin(0, 0.5);
+
+	      //const middleShaddowCap = this.add.image(leftShadowCap.x + leftShadowCap.width, y, 'middle-shadow').setOrigin(0, 0.5);
+	     // middleShaddowCap.displayWidth = this.width;
+      //  this.add.image(middleShaddowCap.x + middleShaddowCap.displayWidth, y, 'right-cap-shadow').setOrigin(0, 0.5);
         // Debug line
         this.totalEnemyLives = 4;
 
