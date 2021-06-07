@@ -4,7 +4,7 @@ class WaveClearMenu extends Phaser.Scene {
     }
     preload() {
 
-        this.load.image('clear', './assets/CLEAR.png')
+        this.load.image('clear', './assets/clear.png')
         this.load.audio('sfx_select', './assets/select_Current.wav');
         this.load.audio('sfx_explosion', './assets/assets_explosion38.wav');
         this.load.audio('sfx_rocket', './assets/assets_rocket_shot.wav');
