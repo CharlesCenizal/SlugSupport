@@ -4,7 +4,7 @@ class WaveClearMenu extends Phaser.Scene {
     }
     preload() {
 
-        this.load.image('map_1', './assets/game_title.png')
+        this.load.image('map_1', './assets/clear.png')
         this.load.audio('sfx_select', './assets/select_Current.wav');
         this.load.audio('sfx_explosion', './assets/assets_explosion38.wav');
         this.load.audio('sfx_rocket', './assets/assets_rocket_shot.wav');
@@ -45,17 +45,20 @@ class WaveClearMenu extends Phaser.Scene {
         var newWave = game.settings.currWave+1;
         var str = "Get Ready for Wave " + newWave.toString();
         this.map_1 = this.add.tileSprite(0, 0, game.config.width, game.config.height, 'map_1').setOrigin(0, 0);
+        /*
         this.add.text(game.config.width / 2, game.config.height / 2 - 200, "Wave Cleared!",menuConfig).setOrigin(0.5);
         this.add.text(game.config.width / 2, game.config.height / 2 - 128, str,menuConfig).setOrigin(0.5);
         this.add.text(game.config.width / 2, game.config.height / 2 - 96, '',menuConfig).setOrigin(0.5);
         this.add.text(game.config.width / 2, game.config.height / 2 - 32, '',menuConfig).setOrigin(0.5);
-
+        */
         menuConfig.backgroundColor = "#4B0082";
         menuConfig.color = '#ADD8E6';
+        /*
         this.add.text(game.config.width / 2, game.config.height / 2 + borderUISize + borderPadding, 'Press Q to upgrade movement', overConfig).setOrigin(0.5);
         this.add.text(game.config.width / 2, game.config.height / 2 + borderUISize + borderPadding + 40, 'Press W to upgrade bullets', overConfig).setOrigin(0.5);
         this.add.text(game.config.width / 2, game.config.height / 2 + borderUISize + borderPadding + 80, 'Press E to upgrade bullet speed', overConfig).setOrigin(0.5);
         this.add.text(game.config.width / 2, game.config.height / 2 + borderUISize + borderPadding + 120, 'Press R to upgrade bullet spray', overConfig).setOrigin(0.5);
+        */
 
         // define keys
         keyQ = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.Q);
