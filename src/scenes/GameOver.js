@@ -38,6 +38,8 @@ class GameOver extends Phaser.Scene {
             fixedWidth: 0
         }
         this.map_1 = this.add.tileSprite(0, 0, game.config.width, game.config.height, 'gameOver').setOrigin(0, 0);
+
+        this.add.text(325, 330, "Defeated on Wave " + game.settings.currWave);
         /*this.add.text(game.config.width / 2, game.config.height / 2 - 160, 'GAME OVERRRRR',menuConfig).setOrigin(0.5);
         this.add.text(game.config.width / 2, game.config.height / 2 - 96, 'Press (R) to Restart or ← to Menu',menuConfig).setOrigin(0.5);
         this.add.text(game.config.width / 2, game.config.height / 2 + 64, 'Credits:',overConfig).setOrigin(0.5);

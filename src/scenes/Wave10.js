@@ -148,7 +148,8 @@ class Wave10 extends Phaser.Scene {
       {
         this.scene.start("gameOverScene");
       }
-      if (this.totalEnemyLives == 0) {
+      if (this.totalEnemyLives <= 0) {
+          this.player1Rocket.setVisible(false);
           this.scene.start("WaveClearMenuScene");
       }
 
@@ -532,7 +533,7 @@ class Wave10 extends Phaser.Scene {
 
     shoot(x, y) {
         let bullet = this.bullets.get(x, y);
-        if (bullet) {
+        if (bullet && this.player1Rocket.visible) {
             this.sound.play('sfx_rocket');
             bullet.setActive(true);
             bullet.setVisible(true);
