@@ -76,7 +76,7 @@ class Wave5 extends Phaser.Scene {
         this.hill3 = this.add.tileSprite(0,0, game.config.width, game.config.height, 'hill3').setOrigin(0, 0);
         this.hill2 = this.add.tileSprite(0,0, game.config.width, game.config.height, 'hill2').setOrigin(0, 0);
         this.hill1 = this.add.tileSprite(0,0, game.config.width, game.config.height, 'hill1').setOrigin(0, 0);
-
+        // tower above health
         this.tower = new Tower(this, 0, 0, 'tower').setOrigin(0, 0);
         this.player1Rocket = new Rocket(this, 42, game.config.height / 2, 'rocket', game.settings.turretSpeed).setOrigin(0.5, 0.5);
         // add spaceshift (x3)

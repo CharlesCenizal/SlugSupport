@@ -63,8 +63,7 @@ class Wave2 extends Phaser.Scene {
           },
           fixedWidth: 0
       }
-        this.add.text(barx, bary-36, 'Health',healthConfig);
-        this.healthLeft = this.add.text(barx, bary, this.game.settings.health, healthConfig2);
+
         // Debug line
         //this.totalEnemyLives = 8;
         this.totalEnemyLives = 2;
@@ -87,7 +86,8 @@ class Wave2 extends Phaser.Scene {
         this.ship02 = new Spaceship(this, game.config.width + Math.floor(Math.random() * 300), Math.floor(Math.random() * (game.config.height - 34)), 'e1', 0, 20, 2).setOrigin(0, 0);
         this.ship03 = new Spaceship(this, game.config.width + Math.floor(Math.random() * 300), Math.floor(Math.random() * (game.config.height - 34)), 'e1', 0, 10, 2).setOrigin(0, 0);
         this.ship04 = new Spaceship(this, game.config.width, Math.floor(Math.random() * (game.config.height - 34)), 'e1', 0, 10, 2).setOrigin(0, 0);
-
+        this.add.text(barx, bary-36, 'Health',healthConfig);
+        this.healthLeft = this.add.text(barx, bary, this.game.settings.health, healthConfig2);
         // define keys
         keyF = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.F);
         keyD = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);

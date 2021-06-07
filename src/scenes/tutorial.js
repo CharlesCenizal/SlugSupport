@@ -61,7 +61,7 @@ class tutorial extends Phaser.Scene{
             bulletSpeed: 0,
             sprayMagnitude: 0,
             maxAmmo: 1000, // High ammo for now
-            health: 2
+            health: 10
         };
         this.sound.play('sfx_select');
         // This line of code is for debugging
@@ -78,7 +78,7 @@ class tutorial extends Phaser.Scene{
             bulletSpeed: 0,
             sprayMagnitude: 0,
             maxAmmo: 1000, // High ammo for now
-            health: 2
+            health: 10
         };
         this.sound.play('sfx_select');
         this.scene.start("wave" + game.settings.currWave + "Scene");
