@@ -119,7 +119,11 @@ class Wave8 extends Phaser.Scene {
 
     // update
     update(time, delta,counter) {
-
+      // GAME OVER CONDITION
+      if(this.game.settings.health == 0)
+      {
+        this.scene.start("gameOverScene");
+      }
       if (this.totalEnemyLives == 0) {
           this.scene.start("WaveClearMenuScene");
       }
@@ -196,9 +200,9 @@ class Wave8 extends Phaser.Scene {
                 bull.setVisible(false);
                 if (this.helicopter.health <= 1) {
                     let boom = this.add.sprite(this.helicopter.x, this.helicopter.y, 'explosion').setOrigin(0, 0);
-                    boom.anims.play('explode');        
-                    boom.on('animationcomplete', () => {                   
-                        boom.destroy();                       
+                    boom.anims.play('explode');
+                    boom.on('animationcomplete', () => {
+                        boom.destroy();
                     });
                 }
                 this.helicopter.health -= 1;
@@ -209,9 +213,9 @@ class Wave8 extends Phaser.Scene {
                 bull.setVisible(false);
                 if (this.helicopter2.health <= 1) {
                     let boom = this.add.sprite(this.helicopter2.x, this.helicopter2.y, 'explosion').setOrigin(0, 0);
-                    boom.anims.play('explode');        
-                    boom.on('animationcomplete', () => {                   
-                        boom.destroy();                       
+                    boom.anims.play('explode');
+                    boom.on('animationcomplete', () => {
+                        boom.destroy();
                     });
                 }
                 this.helicopter2.health -= 1;
@@ -374,11 +378,11 @@ class Wave8 extends Phaser.Scene {
         ship.setVisible(false);
         ship.setActive(false);
         let boom = this.add.sprite(ship.x, ship.y, 'explosion').setOrigin(0, 0);
-        boom.anims.play('explode');        
-        boom.on('animationcomplete', () => { 
-            ship.takeDamage();                    
-            ship.alpha = 1;                    
-            boom.destroy();                       
+        boom.anims.play('explode');
+        boom.on('animationcomplete', () => {
+            ship.takeDamage();
+            ship.alpha = 1;
+            boom.destroy();
         });
     }
 }
