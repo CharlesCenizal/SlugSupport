@@ -77,7 +77,7 @@ class Menu extends Phaser.Scene {
             this.sound.play('sfx_select');
             // This line of code is for debugging
             console.log("now on wave " + game.settings.currWave);
-            this.scene.start("wave" + game.settings.currWave + "Scene");
+            this.scene.start("tutorialScene");
         }
         if (Phaser.Input.Keyboard.JustDown(keyRIGHT)) {
             game.settings =
@@ -92,7 +92,7 @@ class Menu extends Phaser.Scene {
                 health: 100
             };
             this.sound.play('sfx_select');
-            this.scene.start("wave" + game.settings.currWave + "Scene");
+            this.scene.start("tutorialScene");
         }
     }
 
