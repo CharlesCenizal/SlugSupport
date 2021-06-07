@@ -36,7 +36,10 @@ class tutorial extends Phaser.Scene{
   this.add.text(game.config.width / 2, game.config.height / 2 - 250, 'TUTORIAL',menuConfig).setOrigin(0.5);
   this.add.text(game.config.width / 2, game.config.height / 2 - 175, 'Movement: Use Up and Down arrow keys',menuConfig).setOrigin(0.5);
   this.add.text(game.config.width / 2, game.config.height / 2 - 100, 'Fire: Press D and F to fire',menuConfig).setOrigin(0.5);
-  this.add.text(game.config.width / 2, game.config.height / 2 + borderUISize + borderPadding, 'Press ← or → to play', menuConfig).setOrigin(0.5);
+  this.add.text(game.config.width / 2, game.config.height / 2 + borderUISize + borderPadding -25 , 'Tower Defense: You lose health when Planes get past you!', menuConfig).setOrigin(0.5);
+  this.add.text(game.config.width / 2, game.config.height / 2 + borderUISize + borderPadding +50 , 'When your health reaches zero, you lose ', menuConfig).setOrigin(0.5);
+  this.add.text(game.config.width / 2, game.config.height / 2 + borderUISize + borderPadding + 125, 'Press ← or → to play', menuConfig).setOrigin(0.5);
+
   // define keys
 
     keyLEFT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.LEFT);
