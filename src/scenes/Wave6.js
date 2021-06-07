@@ -81,6 +81,7 @@ class Wave6 extends Phaser.Scene {
         // add spaceshift (x3)
         this.add.text(barx, bary-36, 'Health',healthConfig);
         this.healthLeft = this.add.text(barx, bary, this.game.settings.health, healthConfig2);
+          this.add.text(game.config.width-100,5, "Score", healthConfig);
         this.hammerhead = new Hammerhead(this, game.config.width + Math.floor(Math.random() * 300), Math.floor(Math.random() * (game.config.height - 34)), 'spaceship', 0, 10, 3).setOrigin(0, 0);
         this.wavyShip1 = new WavyShip(this, game.config.width + Math.floor(Math.random() * 300), Math.floor(Math.random() * (game.config.height - 65)), 'aircraft', 0, 10, 40, 2).setOrigin(0, 0);
         this.wavyShip2 = new WavyShip(this, game.config.width + Math.floor(Math.random() * 300), Math.floor(Math.random() * (game.config.height - 65)), 'aircraft', 0, 10, 40, 2).setOrigin(0, 0);

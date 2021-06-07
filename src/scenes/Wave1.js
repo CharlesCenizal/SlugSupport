@@ -95,6 +95,7 @@ class Wave1 extends Phaser.Scene {
         // Health Number itself
         this.healthLeft = this.add.text(barx, bary, this.game.settings.health, healthConfig2);
         //this.text.addColor('301934');
+        this.add.text(game.config.width-100,5, "Score", healthConfig);
         this.ship01 = new Spaceship(this, game.config.width, Math.floor(Math.random() * (game.config.height - 34)), 'e1', 0, 30, 2).setOrigin(0, 0);
         this.ship02 = new Spaceship(this, game.config.width + Math.floor(Math.random() * 300), Math.floor(Math.random() * (game.config.height - 34)), 'e1', 0, 20, 2).setOrigin(0, 0);
 
@@ -199,7 +200,7 @@ class Wave1 extends Phaser.Scene {
           console.log("ship 1 the health is now:" + this.game.settings.health);
           this.healthLeft.text = parseInt(this.game.settings.health);
         }
-        if(parseInt(this.ship02.x) == 150ss)
+        if(parseInt(this.ship02.x) == 150)
         {
           //console.log("goteem");
           console.log(this.ship02.x);

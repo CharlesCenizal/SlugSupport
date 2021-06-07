@@ -88,6 +88,7 @@ class Wave2 extends Phaser.Scene {
         this.ship04 = new Spaceship(this, game.config.width, Math.floor(Math.random() * (game.config.height - 34)), 'e1', 0, 10, 2).setOrigin(0, 0);
         this.add.text(barx, bary-36, 'Health',healthConfig);
         this.healthLeft = this.add.text(barx, bary, this.game.settings.health, healthConfig2);
+        this.add.text(game.config.width-100,5, "Score", healthConfig);
         // define keys
         keyF = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.F);
         keyD = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);

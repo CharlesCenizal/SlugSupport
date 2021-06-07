@@ -65,7 +65,7 @@ class Wave4 extends Phaser.Scene {
             fixedWidth: 0
         }
         //this.totalEnemyLives = 12;
-        this.totalEnemyLives = 2;
+        this.totalEnemyLives = 1;
         this.bullets = this.physics.add.group({
             defaultKey: 'bullet',
             maxSize: game.settings.maxAmmo
@@ -82,6 +82,7 @@ class Wave4 extends Phaser.Scene {
         // add spaceshift (x3)
         this.add.text(barx, bary-36, 'Health',healthConfig);
         this.healthLeft = this.add.text(barx, bary, this.game.settings.health, healthConfig2);
+          this.add.text(game.config.width-100,5, "Score", healthConfig);
         this.ship01 = new Spaceship(this, game.config.width + Math.floor(Math.random() * 300), Math.floor(Math.random() * (game.config.height - 34)), 'e1', 0, 30, 2).setOrigin(0, 0);
         this.ship02 = new Spaceship(this, game.config.width, Math.floor(Math.random() * (game.config.height - 34)), 'e1', 0, 20, 2).setOrigin(0, 0);
         this.wavyShip1 = new WavyShip(this, game.config.width, Math.floor(Math.random() * (game.config.height - 65)), 'aircraft', 0, 10, 30, 1).setOrigin(0, 0);

@@ -27,20 +27,35 @@ class WaveClearMenu extends Phaser.Scene {
             },
             fixedWidth: 0
         }
+        let overConfig =
+        {
+            fontFamily: 'Times',
+            fontSize: '18px',
+            backgroundColor: '#4B0082',
+            color: '#ADD8E6',
+            align: 'right',
+            padding:
+            {
+                top: 5,
+                bottom: 5,
+            },
+            fixedWidth: 0
+        }
         // show menu text
         var newWave = game.settings.currWave+1;
-        var str = "Wave" + newWave.toString();
+        var str = "Get Ready for Wave " + newWave.toString();
         this.map_1 = this.add.tileSprite(0, 0, game.config.width, game.config.height, 'map_1').setOrigin(0, 0);
-        this.add.text(game.config.width / 2, game.config.height / 2 - 160, str,menuConfig).setOrigin(0.5);
+        this.add.text(game.config.width / 2, game.config.height / 2 - 200, "Wave Cleared!",menuConfig).setOrigin(0.5);
+        this.add.text(game.config.width / 2, game.config.height / 2 - 128, str,menuConfig).setOrigin(0.5);
         this.add.text(game.config.width / 2, game.config.height / 2 - 96, '',menuConfig).setOrigin(0.5);
         this.add.text(game.config.width / 2, game.config.height / 2 - 32, '',menuConfig).setOrigin(0.5);
 
-        menuConfig.backgorundColor = "#4B0082";
+        menuConfig.backgroundColor = "#4B0082";
         menuConfig.color = '#ADD8E6';
-        this.add.text(game.config.width / 2, game.config.height / 2 + borderUISize + borderPadding, 'Press Q to upgrade movement', menuConfig).setOrigin(0.5);
-        this.add.text(game.config.width / 2, game.config.height / 2 + borderUISize + borderPadding + 60, 'Press W to upgrade bullets', menuConfig).setOrigin(0.5);
-        this.add.text(game.config.width / 2, game.config.height / 2 + borderUISize + borderPadding + 120, 'Press E to upgrade bullet speed', menuConfig).setOrigin(0.5);
-        this.add.text(game.config.width / 2, game.config.height / 2 + borderUISize + borderPadding + 180, 'Press R to upgrade bullet spray', menuConfig).setOrigin(0.5);
+        this.add.text(game.config.width / 2, game.config.height / 2 + borderUISize + borderPadding, 'Press Q to upgrade movement', overConfig).setOrigin(0.5);
+        this.add.text(game.config.width / 2, game.config.height / 2 + borderUISize + borderPadding + 40, 'Press W to upgrade bullets', overConfig).setOrigin(0.5);
+        this.add.text(game.config.width / 2, game.config.height / 2 + borderUISize + borderPadding + 80, 'Press E to upgrade bullet speed', overConfig).setOrigin(0.5);
+        this.add.text(game.config.width / 2, game.config.height / 2 + borderUISize + borderPadding + 120, 'Press R to upgrade bullet spray', overConfig).setOrigin(0.5);
 
         // define keys
         keyQ = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.Q);
