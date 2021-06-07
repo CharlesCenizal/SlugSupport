@@ -28,8 +28,10 @@ class WaveClearMenu extends Phaser.Scene {
             fixedWidth: 0
         }
         // show menu text
+        var newWave = game.settings.currWave+1;
+        var str = "Wave" + newWave.toString();
         this.map_1 = this.add.tileSprite(0, 0, game.config.width, game.config.height, 'map_1').setOrigin(0, 0);
-        this.add.text(game.config.width / 2, game.config.height / 2 - 160, 'WAVE CLEAR',menuConfig).setOrigin(0.5);
+        this.add.text(game.config.width / 2, game.config.height / 2 - 160, str,menuConfig).setOrigin(0.5);
         this.add.text(game.config.width / 2, game.config.height / 2 - 96, '',menuConfig).setOrigin(0.5);
         this.add.text(game.config.width / 2, game.config.height / 2 - 32, '',menuConfig).setOrigin(0.5);
 

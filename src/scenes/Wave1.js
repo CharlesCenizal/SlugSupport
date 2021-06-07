@@ -191,7 +191,7 @@ class Wave1 extends Phaser.Scene {
 
         }
         // REDUCING THE HEALTH
-        if(parseInt(this.ship01.x) == 100)
+        if(parseInt(this.ship01.x) == 150)
         {
           //console.log("goteem");
           console.log(this.ship01.x);
@@ -199,7 +199,7 @@ class Wave1 extends Phaser.Scene {
           console.log("ship 1 the health is now:" + this.game.settings.health);
           this.healthLeft.text = parseInt(this.game.settings.health);
         }
-        if(parseInt(this.ship02.x) == 100)
+        if(parseInt(this.ship02.x) == 150ss)
         {
           //console.log("goteem");
           console.log(this.ship02.x);
