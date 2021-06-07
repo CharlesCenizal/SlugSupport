@@ -4,7 +4,7 @@ class WaveClearMenu extends Phaser.Scene {
     }
     preload() {
 
-        this.load.image('map_1', './assets/clear.png')
+        this.load.image('clear', './assets/CLEAR.png')
         this.load.audio('sfx_select', './assets/select_Current.wav');
         this.load.audio('sfx_explosion', './assets/assets_explosion38.wav');
         this.load.audio('sfx_rocket', './assets/assets_rocket_shot.wav');
@@ -44,7 +44,7 @@ class WaveClearMenu extends Phaser.Scene {
         // show menu text
         var newWave = game.settings.currWave+1;
         var str = "Get Ready for Wave " + newWave.toString();
-        this.map_1 = this.add.tileSprite(0, 0, game.config.width, game.config.height, 'map_1').setOrigin(0, 0);
+        this.map_1 = this.add.tileSprite(0, 0, game.config.width, game.config.height, 'clear').setOrigin(0, 0);
 
         menuConfig.backgroundColor = "#4B0082";
         menuConfig.color = '#ADD8E6';
@@ -68,17 +68,17 @@ class WaveClearMenu extends Phaser.Scene {
           loop: true,
           delate: 0
         }
-        this.music.play(musicConfig);
-        //this.add.text(20, 20, "Rocket Patrol Menu");
+        //this.music.play(musicConfig);
+        this.add.text(325, 460, "Current Wave: " + game.settings.currWave);
         // change scenes
         //this.scene.start("playScene")
     }
     update() {
         //this.music.play(musicConfig);
         if (Phaser.Input.Keyboard.JustDown(keyQ)) {
-            game.settings.speedMultiplier += .02;
+            game.settings.speedMultiplier += .01;
             game.settings.currWave += 1;
-            game.settings.turretSpeed += 1;
+            game.settings.turretSpeed += 2;
             this.sound.play('sfx_select');
             // This line of code is for debugging
             console.log("From Select -> now on wave " + game.settings.currWave);
@@ -91,10 +91,11 @@ class WaveClearMenu extends Phaser.Scene {
             this.scene.start("wave" + game.settings.currWave + "Scene");
         }
         if (Phaser.Input.Keyboard.JustDown(keyW)) {
-            game.settings.speedMultiplier += .02;
+            game.settings.speedMultiplier += .01;
             game.settings.currWave += 1;
             game.settings.maxAmmo += 5;
             this.sound.play('sfx_select');
+            console.log("From Select -> now on wave " + game.settings.currWave);
             if (game.settings.currWave >= 10) {
                 this.scene.start("wave10Scene");
                 if (game.settings.currWave % 10 == 0 && game.settings.currWave != 10) {
@@ -104,10 +105,11 @@ class WaveClearMenu extends Phaser.Scene {
             this.scene.start("wave" + game.settings.currWave + "Scene");
         }
         if (Phaser.Input.Keyboard.JustDown(keyE)) {
-            game.settings.speedMultiplier += .02;
+            game.settings.speedMultiplier += .01;
             game.settings.currWave += 1;
-            game.settings.bulletSpeed += 50;
+            game.settings.bulletSpeed += 75;
             this.sound.play('sfx_select');
+            console.log("From Select -> now on wave " + game.settings.currWave);
             if (game.settings.currWave >= 10) {
                 this.scene.start("wave10Scene");
                 if (game.settings.currWave % 10 == 0 && game.settings.currWave != 10) {
@@ -118,10 +120,11 @@ class WaveClearMenu extends Phaser.Scene {
             this.scene.start("wave1Scene");
         }
         if (Phaser.Input.Keyboard.JustDown(keyR)) {
-            game.settings.speedMultiplier += .02;
+            game.settings.speedMultiplier += .01;
             game.settings.currWave += 1;
-            game.settings.sprayMagnitude += 10;
+            game.settings.sprayMagnitude += 20;
             this.sound.play('sfx_select');
+            console.log("From Select -> now on wave " + game.settings.currWave);
             if (game.settings.currWave >= 10) {
                 this.scene.start("wave10Scene");
                 if (game.settings.currWave % 10 == 0 && game.settings.currWave != 10) {
