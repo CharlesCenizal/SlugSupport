@@ -65,8 +65,9 @@ class Wave2 extends Phaser.Scene {
       }
 
         // Debug line
-        //this.totalEnemyLives = 8;
-        this.totalEnemyLives = 2;
+        this.totalEnemyLives = 8;
+        console.log(this.totalEnemyLives);
+        //this.totalEnemyLives = 2;
         this.bullets = this.physics.add.group({
             defaultKey: 'bullet',
             maxSize: game.settings.maxAmmo
@@ -86,9 +87,16 @@ class Wave2 extends Phaser.Scene {
         this.ship02 = new Spaceship(this, game.config.width + Math.floor(Math.random() * 300), Math.floor(Math.random() * (game.config.height - 34)), 'e1', 0, 20, 2).setOrigin(0, 0);
         this.ship03 = new Spaceship(this, game.config.width + Math.floor(Math.random() * 300), Math.floor(Math.random() * (game.config.height - 34)), 'e1', 0, 10, 2).setOrigin(0, 0);
         this.ship04 = new Spaceship(this, game.config.width, Math.floor(Math.random() * (game.config.height - 34)), 'e1', 0, 10, 2).setOrigin(0, 0);
-        this.add.text(barx, bary-36, 'Health',healthConfig);
-        this.healthLeft = this.add.text(barx, bary, this.game.settings.health, healthConfig2);
-        this.add.text(game.config.width-100,5, "Score", healthConfig);
+        //this.add.text(barx, bary-36, 'Health',healthConfig);
+
+        this.healthBar = this.add.graphics();
+        this.healthBar.fillStyle(0x00ff80, 1);
+        this.healthBar.fillRect(0, 0, game.settings.health, 25);
+        this.healthBar.x = 150;
+        this.healthBar.y = 10;
+        
+        //this.healthLeft = this.add.text(barx, bary, this.game.settings.health, healthConfig2);
+        //this.add.text(game.config.width-100,5, "Score", healthConfig);
         // define keys
         keyF = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.F);
         keyD = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
@@ -120,8 +128,15 @@ class Wave2 extends Phaser.Scene {
 
     // update
     update(time, delta,counter) {
+    
+        this.healthBar.clear();
+        this.healthBar.fillStyle(0x00ff80, 1);
+        this.healthBar.fillRect(0, 0, game.settings.health, 25);
+        
+      //this.healthLeft.text = game.settings.health;
+
       // GAME OVER CONDITION
-      if(this.game.settings.health == 0)
+      if(this.game.settings.health <= 0)
       {
         this.scene.start("gameOverScene");
       }
@@ -185,7 +200,7 @@ class Wave2 extends Phaser.Scene {
             this.ship04.update();
         }
         // REDUCING THE HEALTH
-        if(parseInt(this.ship01.x) == 125)
+        /*if(parseInt(this.ship01.x) == 125)
         {
           //console.log("goteem");
           console.log(this.ship01.x);
@@ -213,7 +228,7 @@ class Wave2 extends Phaser.Scene {
           this.game.settings.health -= 1;
           console.log("4 the health is now:" + this.game.settings.health);
         }
-        this.healthLeft.text = parseInt(this.game.settings.health);
+        this.healthLeft.text = parseInt(this.game.settings.health);*/
 
     }
 

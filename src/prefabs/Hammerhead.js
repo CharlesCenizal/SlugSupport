@@ -17,6 +17,9 @@ class Hammerhead extends Phaser.GameObjects.Sprite {
         // wrap around
 
         if (this.x <= 135 - this.width && this.lifePoints > 0) {
+            if (this.visible) {
+                game.settings.health -= 10;
+            }
             this.reset();
             //this.game.settings.health -= 1;
             //console.log(this.game.settings.health);

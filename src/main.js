@@ -39,7 +39,7 @@ let config = {
     width: 800,
     height: 600,
     physics: physConfig,
-    scene: [Menu, Wave1, Wave2, Wave3, Wave4, Wave5, Wave6, Wave7, Wave8, Wave9, Wave10, WaveClearMenu, GameOver, tutorial]
+    scene: [Menu, Menu2, Wave1, Wave2, Wave3, Wave4, Wave5, Wave6, Wave7, Wave8, Wave9, Wave10, WaveClearMenu, GameOver, tutorial]
 }
 
 let game = new Phaser.Game(config);
@@ -48,7 +48,8 @@ let game = new Phaser.Game(config);
 let borderUISize = game.config.height / 15;
 let borderPadding = borderUISize / 3;
 let starSpeed = 3;
+let tutorialDone = false;
 
 // reserve keyboard bindings
 
-let keyF, keyR, keyLEFT, keyRIGHT, keyUP, keyDOWN, keyD, keyQ, keyW, keyE;
+let keyF, keyR, keyLEFT, keyRIGHT, keyUP, keyDOWN, keyD, keyQ, keyW, keyE, keySPACE;

@@ -20,6 +20,9 @@ class Helicopter extends Phaser.GameObjects.Sprite {
         // wrap around
 
         if (this.x <= 190 - this.width && this.lifePoints > 0) {
+            if (this.visible) {
+                game.settings.health -= 20;
+            }
             this.reset();
         }
     }

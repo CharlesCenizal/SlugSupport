@@ -7,8 +7,8 @@ class tutorial extends Phaser.Scene{
 
   preload() {
 
-      this.load.image('map_1', './assets/game_title.png')
-      this.load.audio('sfx_select', './assets/discord-leave.mp3');
+      this.load.image('map_1', './assets/tutorial.png')
+      this.load.audio('sfx_select', './assets/select_Current.wav');
       this.load.audio('sfx_explosion', './assets/assets_explosion38.wav');
       this.load.audio('sfx_rocket', './assets/assets_rocket_shot.wav');
       this.load.audio('music','./assets/UnderwaterJingle.mp3')
@@ -33,25 +33,25 @@ class tutorial extends Phaser.Scene{
   // menu image
   this.map_1 = this.add.tileSprite(0, 0, game.config.width, game.config.height, 'map_1').setOrigin(0, 0);
   // show menu text
-  this.add.text(game.config.width / 2, game.config.height / 2 - 250, 'TUTORIAL',menuConfig).setOrigin(0.5);
+  /*this.add.text(game.config.width / 2, game.config.height / 2 - 250, 'TUTORIAL',menuConfig).setOrigin(0.5);
   this.add.text(game.config.width / 2, game.config.height / 2 - 175, 'Movement: Use Up and Down arrow keys',menuConfig).setOrigin(0.5);
   this.add.text(game.config.width / 2, game.config.height / 2 - 100, 'Fire: Press D and F to fire',menuConfig).setOrigin(0.5);
   this.add.text(game.config.width / 2, game.config.height / 2 + borderUISize + borderPadding -25 , 'Tower Defense: You lose health when Planes get past you!', menuConfig).setOrigin(0.5);
   this.add.text(game.config.width / 2, game.config.height / 2 + borderUISize + borderPadding +50 , 'When your health reaches zero, you lose ', menuConfig).setOrigin(0.5);
-  this.add.text(game.config.width / 2, game.config.height / 2 + borderUISize + borderPadding + 125, 'Press ← or → to play', menuConfig).setOrigin(0.5);
+  this.add.text(game.config.width / 2, game.config.height / 2 + borderUISize + borderPadding + 125, 'Press ← or → to play', menuConfig).setOrigin(0.5);*/
 
   // define keys
 
     keyLEFT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.LEFT);
     keyRIGHT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.RIGHT);
+    keySPACE = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE); 
 
   }
 
   update()
   {
-    console.log("Start of tutorial");
 
-    if (Phaser.Input.Keyboard.JustDown(keyLEFT)) {
+    if (Phaser.Input.Keyboard.JustDown(keySPACE)) {
         game.settings =
         {
             currWave: 1,
@@ -61,47 +61,10 @@ class tutorial extends Phaser.Scene{
             bulletSpeed: 0,
             sprayMagnitude: 0,
             maxAmmo: 1000, // High ammo for now
-            health: 10
-        };
-        this.sound.play('sfx_select');
-        // This line of code is for debugging
-        console.log("now on wave " + game.settings.currWave);
-        this.scene.start("wave" + game.settings.currWave + "Scene");
-    }
-    if (Phaser.Input.Keyboard.JustDown(keyRIGHT)) {
-        game.settings =
-        {
-            currWave: 1,
-            turretSpeed: 4,
-            speedMultiplier: 1,
-            extraLives: 0,
-            bulletSpeed: 0,
-            sprayMagnitude: 0,
-            maxAmmo: 1000, // High ammo for now
-            health: 10
+            health: 500
         };
         this.sound.play('sfx_select');
         this.scene.start("wave" + game.settings.currWave + "Scene");
     }
-
-
-
-
-
-
-
   }
-
-
-
-
-
-
-
-
-
-
-
-
-
 }

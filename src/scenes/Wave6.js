@@ -63,8 +63,8 @@ class Wave6 extends Phaser.Scene {
           fixedWidth: 0
       }
         // Debug line
-        //this.totalEnemyLives = 19;
-        this.totalEnemyLives = 2;
+        this.totalEnemyLives = 19;
+        //this.totalEnemyLives = 2;
         this.bullets = this.physics.add.group({
             defaultKey: 'bullet',
             maxSize: game.settings.maxAmmo
@@ -79,9 +79,16 @@ class Wave6 extends Phaser.Scene {
         this.tower = new Tower(this, 0, 0, 'tower').setOrigin(0, 0);
         this.player1Rocket = new Rocket(this, 42, game.config.height / 2, 'rocket', game.settings.turretSpeed).setOrigin(0.5, 0.5);
         // add spaceshift (x3)
-        this.add.text(barx, bary-36, 'Health',healthConfig);
-        this.healthLeft = this.add.text(barx, bary, this.game.settings.health, healthConfig2);
-          this.add.text(game.config.width-100,5, "Score", healthConfig);
+        //this.add.text(barx, bary-36, 'Health',healthConfig);
+        //this.healthLeft = this.add.text(barx, bary, this.game.settings.health, healthConfig2);
+        //this.add.text(game.config.width-100,5, "Score", healthConfig);
+
+        this.healthBar = this.add.graphics();
+        this.healthBar.fillStyle(0x00ff80, 1);
+        this.healthBar.fillRect(0, 0, game.settings.health, 25);
+        this.healthBar.x = 150;
+        this.healthBar.y = 10;
+
         this.hammerhead = new Hammerhead(this, game.config.width + Math.floor(Math.random() * 300), Math.floor(Math.random() * (game.config.height - 34)), 'spaceship', 0, 10, 3).setOrigin(0, 0);
         this.wavyShip1 = new WavyShip(this, game.config.width + Math.floor(Math.random() * 300), Math.floor(Math.random() * (game.config.height - 65)), 'aircraft', 0, 10, 40, 2).setOrigin(0, 0);
         this.wavyShip2 = new WavyShip(this, game.config.width + Math.floor(Math.random() * 300), Math.floor(Math.random() * (game.config.height - 65)), 'aircraft', 0, 10, 40, 2).setOrigin(0, 0);
@@ -113,8 +120,15 @@ class Wave6 extends Phaser.Scene {
 
     // update
     update(time, delta,counter) {
+
+        this.healthBar.clear();
+        this.healthBar.fillStyle(0x00ff80, 1);
+        this.healthBar.fillRect(0, 0, game.settings.health, 25);
+
+        //this.healthLeft.text = game.settings.health;
+
       // GAME OVER CONDITION
-      if(this.game.settings.health == 0)
+      if(this.game.settings.health <= 0)
       {
         this.scene.start("gameOverScene");
       }
@@ -197,12 +211,14 @@ class Wave6 extends Phaser.Scene {
             this.helicopter2.update();
             this.hammerhead.update();
             if (!this.hammerhead.active) {
-                let randInt = Math.floor((Math.random() * 200));
+                let randInt = Math.floor((Math.random() * 100));
                 if (randInt == 20) {
                     this.hammerhead.active = true;
                 }
             }
         }
+
+        /*
         if(parseInt(this.hammerhead.x) == 100)
         {
           //console.log("goteem");
@@ -238,7 +254,7 @@ class Wave6 extends Phaser.Scene {
           this.game.settings.health -= 1;
           console.log("helicopter2 the health is now:" + this.game.settings.health);
         }
-        this.healthLeft.text = parseInt(this.game.settings.health);
+        this.healthLeft.text = parseInt(this.game.settings.health);*/
 
     }
 

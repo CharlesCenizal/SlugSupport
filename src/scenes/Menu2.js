@@ -1,6 +1,6 @@
-class Menu extends Phaser.Scene {
+class Menu2 extends Phaser.Scene {
     constructor() {
-        super("menuScene");
+        super("menu2Scene");
     }
     preload() {
 
@@ -42,20 +42,6 @@ class Menu extends Phaser.Scene {
         keyRIGHT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.RIGHT);
         keySPACE = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
 
-        this.music = this.sound.add('music');
-
-        var musicConfig =
-        {
-          mute: false,
-          volume: 1,
-          rate: 1,
-          detune: 0,
-          seek: 0,
-          loop: true,
-          delate: 0
-        }
-        
-        this.music.play(musicConfig);
         //this.add.text(20, 20, "Rocket Patrol Menu");
         // change scenes
         //this.scene.start("playScene")
@@ -78,7 +64,7 @@ class Menu extends Phaser.Scene {
             };
             this.sound.play('sfx_select');
             // This line of code is for debugging
-            this.scene.start("tutorialScene");
+            this.scene.start("wave1Scene");
         }
     }
 }

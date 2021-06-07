@@ -74,8 +74,8 @@ class Wave1 extends Phaser.Scene {
       //  this.add.image(middleShaddowCap.x + middleShaddowCap.displayWidth, y, 'right-cap-shadow').setOrigin(0, 0.5);
         // Debug line
 
-        //this.totalEnemyLives = 4;
-        this.totalEnemyLives = 2;
+        this.totalEnemyLives = 4;
+        //this.totalEnemyLives = 2;
         this.bullets = this.physics.add.group({
             defaultKey: 'bullet',
             maxSize: game.settings.maxAmmo
@@ -91,11 +91,17 @@ class Wave1 extends Phaser.Scene {
         this.player1Rocket = new Rocket(this, 42, game.config.height / 2, 'rocket', game.settings.turretSpeed).setOrigin(0.5, 0.5);
         // add spaceshift (x3)
         //this.add.text(barx,bary-36,"Health");
-        this.add.text(barx, bary-36, 'Health',healthConfig);
+        this.healthBar = this.add.graphics();
+        this.healthBar.fillStyle(0x00ff80, 1);
+        this.healthBar.fillRect(0, 0, game.settings.health, 25);
+        this.healthBar.x = 150;
+        this.healthBar.y = 10;
+
+        //this.add.text(barx, bary-36, 'Health',healthConfig);
         // Health Number itself
-        this.healthLeft = this.add.text(barx, bary, this.game.settings.health, healthConfig2);
+        //this.healthLeft = this.add.text(barx, bary, this.game.settings.health, healthConfig2);
         //this.text.addColor('301934');
-        this.add.text(game.config.width-100,5, "Score", healthConfig);
+        //this.add.text(game.config.width-100,5, "Score", healthConfig);
         this.ship01 = new Spaceship(this, game.config.width, Math.floor(Math.random() * (game.config.height - 34)), 'e1', 0, 30, 2).setOrigin(0, 0);
         this.ship02 = new Spaceship(this, game.config.width + Math.floor(Math.random() * 300), Math.floor(Math.random() * (game.config.height - 34)), 'e1', 0, 20, 2).setOrigin(0, 0);
 
@@ -130,8 +136,12 @@ class Wave1 extends Phaser.Scene {
 
     // update
     update(time, delta,counter) {
+        this.healthBar.clear();
+        this.healthBar.fillStyle(0x00ff80, 1);
+        this.healthBar.fillRect(0, 0, game.settings.health, 25);
+        //console.log(this.healthLeft.text);
         // GAME OVER CONDITION
-        if(this.game.settings.health == 0)
+        if(this.game.settings.health <= 0)
         {
           this.scene.start("gameOverScene");
         }
@@ -180,7 +190,7 @@ class Wave1 extends Phaser.Scene {
             this.ship01.update();
             //this.game.settings.health -= 1;
             //console.log(this.game.settings.health);
-            console.log("ship01 pos");
+            //console.log("ship01 pos");
             //console.log(this.ship01.x);
             /*if(1 == 1)
             {
@@ -192,7 +202,7 @@ class Wave1 extends Phaser.Scene {
 
         }
         // REDUCING THE HEALTH
-        if(parseInt(this.ship01.x) == 150)
+        /*if(parseInt(this.ship01.x) == 150)
         {
           //console.log("goteem");
           console.log(this.ship01.x);
@@ -208,7 +218,7 @@ class Wave1 extends Phaser.Scene {
           console.log("ship 2 the health is now:" + this.game.settings.health);
           this.healthLeft.text = parseInt(this.game.settings.health);
         }
-        this.healthLeft.text = parseInt(this.game.settings.health);
+        this.healthLeft.text = parseInt(this.game.settings.health);*/
 
     }
 

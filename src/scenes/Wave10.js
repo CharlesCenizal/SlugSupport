@@ -79,9 +79,16 @@ class Wave10 extends Phaser.Scene {
         this.tower = new Tower(this, 0, 0, 'tower').setOrigin(0, 0);
         this.player1Rocket = new Rocket(this, 42, game.config.height / 2, 'rocket', game.settings.turretSpeed).setOrigin(0.5, 0.5);
         // add spaceshift (x3)
-        this.add.text(barx, bary-36, 'Health',healthConfig);
-        this.healthLeft = this.add.text(barx, bary, this.game.settings.health, healthConfig2);
-          this.add.text(game.config.width-100,5, "Score", healthConfig);
+        //this.add.text(barx, bary-36, 'Health',healthConfig);
+        //this.healthLeft = this.add.text(barx, bary, this.game.settings.health, healthConfig2);
+        //this.add.text(game.config.width-100,5, "Score", healthConfig);
+
+        this.healthBar = this.add.graphics();
+        this.healthBar.fillStyle(0x00ff80, 1);
+        this.healthBar.fillRect(0, 0, game.settings.health, 25);
+        this.healthBar.x = 150;
+        this.healthBar.y = 10;
+
         this.ship01 = new Spaceship(this, game.config.width + Math.floor(Math.random() * 300), Math.floor(Math.random() * (game.config.height - 34)), 'e1', 0, 30, 2 + game.settings.extraLives).setOrigin(0, 0);
         this.ship02 = new Spaceship(this, game.config.width + Math.floor(Math.random() * 300), Math.floor(Math.random() * (game.config.height - 34)), 'e1', 0, 20, 2 + game.settings.extraLives).setOrigin(0, 0);
         this.ship03 = new Spaceship(this, game.config.width + Math.floor(Math.random() * 300), Math.floor(Math.random() * (game.config.height - 34)), 'e1', 0, 20, 2 + game.settings.extraLives).setOrigin(0, 0);
@@ -129,8 +136,15 @@ class Wave10 extends Phaser.Scene {
 
     // update
     update(time, delta,counter) {
+
+        this.healthBar.clear();
+        this.healthBar.fillStyle(0x00ff80, 1);
+        this.healthBar.fillRect(0, 0, game.settings.health, 25);
+
+        //this.healthLeft.text = game.settings.health;
+
       // GAME OVER CONDITION
-      if(this.game.settings.health == 0)
+      if(this.game.settings.health <= 0)
       {
         this.scene.start("gameOverScene");
       }
@@ -339,30 +353,32 @@ class Wave10 extends Phaser.Scene {
             this.hammerhead3.update();
             this.hammerhead4.update();
             if (!this.hammerhead.active) {
-                let randInt = Math.floor((Math.random() * 200));
+                let randInt = Math.floor((Math.random() * 100));
                 if (randInt == 20) {
                     this.hammerhead.active = true;
                 }
             }
             if (!this.hammerhead2.active) {
-                let randInt = Math.floor((Math.random() * 200));
+                let randInt = Math.floor((Math.random() * 100));
                 if (randInt == 20) {
                     this.hammerhead2.active = true;
                 }
             }
             if (!this.hammerhead3.active) {
-                let randInt = Math.floor((Math.random() * 200));
+                let randInt = Math.floor((Math.random() * 100));
                 if (randInt == 20) {
                     this.hammerhead3.active = true;
                 }
             }
             if (!this.hammerhead4.active) {
-                let randInt = Math.floor((Math.random() * 200));
+                let randInt = Math.floor((Math.random() * 100));
                 if (randInt == 20) {
                     this.hammerhead4.active = true;
                 }
             }
         }
+
+        /*
         if(parseInt(this.ship01.x) == 100)
         {
           //console.log("goteem");
@@ -510,7 +526,7 @@ class Wave10 extends Phaser.Scene {
           this.game.settings.health -= 5;
           console.log("hammerhead4 the health is now:" + this.game.settings.health);
         }
-        this.healthLeft.text = parseInt(this.game.settings.health);
+        this.healthLeft.text = parseInt(this.game.settings.health);*/
 
     }
 

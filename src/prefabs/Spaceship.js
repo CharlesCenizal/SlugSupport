@@ -15,9 +15,10 @@ class Spaceship extends Phaser.GameObjects.Sprite {
         // wrap around
 
         if (this.x <= 145 - this.width && this.lifePoints > 0) {
+            if (this.visible) {
+                game.settings.health -= 5;
+            }
             this.reset();
-            //this.game.settings.health -= 1;
-            //console.log(this.game.settings.health);
         }
     }
     // position reset
