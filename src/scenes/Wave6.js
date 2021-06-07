@@ -202,35 +202,35 @@ class Wave6 extends Phaser.Scene {
                 }
             }
         }
-        if(parseInt(this.hammerhead.x) == 0)
+        if(parseInt(this.hammerhead.x) == 100)
         {
           //console.log("goteem");
           console.log(this.hammerhead.x);
           this.game.settings.health -= 1;
           console.log("hammerhead the health is now:" + this.game.settings.health);
         }
-        if(parseInt(this.wavyShip1.x) == 0)
+        if(parseInt(this.wavyShip1.x) == 100)
         {
           //console.log("goteem");
           console.log(this.wavyShip1.x);
           this.game.settings.health -= 1;
           console.log("wavyShip1 the health is now:" + this.game.settings.health);
         }
-        if(parseInt(this.wavyShip2.x) == 0)
+        if(parseInt(this.wavyShip2.x) == 100)
         {
           //console.log("goteem");
           console.log(this.wavyShip2.x);
           this.game.settings.health -= 1;
           console.log("wavyShip2 the health is now:" + this.game.settings.health);
         }
-        if(parseInt(this.helicopter.x) == 0)
+        if(parseInt(this.helicopter.x) == 100)
         {
           //console.log("goteem");
           console.log(this.helicopter.x);
           this.game.settings.health -= 1;
           console.log("helicopter the health is now:" + this.game.settings.health);
         }
-        if(parseInt(this.helicopter2.x) == 0)
+        if(parseInt(this.helicopter2.x) == 100)
         {
           //console.log("goteem");
           console.log(this.helicopter2.x);

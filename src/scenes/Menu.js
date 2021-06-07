@@ -29,7 +29,7 @@ class Menu extends Phaser.Scene {
         }
         // show menu text
         this.map_1 = this.add.tileSprite(0, 0, game.config.width, game.config.height, 'menu').setOrigin(0, 0);
-        this.add.text(game.config.width / 2, game.config.height / 2 - 160, 'Slug Support: Anti Air Edition',menuConfig).setOrigin(0.5);
+        //this.add.text(game.config.width / 2, game.config.height / 2 - 160, 'Slug Support: Anti Air Edition',menuConfig).setOrigin(0.5);
         this.add.text(game.config.width / 2, game.config.height / 2 - 96, '',menuConfig).setOrigin(0.5);
         this.add.text(game.config.width / 2, game.config.height / 2 - 32, '',menuConfig).setOrigin(0.5);
 
@@ -72,7 +72,7 @@ class Menu extends Phaser.Scene {
                 bulletSpeed: 0,
                 sprayMagnitude: 0,
                 maxAmmo: 1000, // High ammo for now
-                health: 100
+                health: 2
             };
             this.sound.play('sfx_select');
             // This line of code is for debugging
@@ -89,7 +89,7 @@ class Menu extends Phaser.Scene {
                 bulletSpeed: 0,
                 sprayMagnitude: 0,
                 maxAmmo: 1000, // High ammo for now
-                health: 100
+                health: 2
             };
             this.sound.play('sfx_select');
             this.scene.start("tutorialScene");

@@ -257,77 +257,77 @@ class Wave8 extends Phaser.Scene {
                 }
             }
         }
-        if(parseInt(this.ship01.x) == 0)
+        if(parseInt(this.ship01.x) == 100)
         {
           //console.log("goteem");
           console.log(this.ship01.x);
           this.game.settings.health -= 1;
           console.log("1 the health is now:" + this.game.settings.health);
         }
-        if(parseInt(this.ship02.x) == 0)
+        if(parseInt(this.ship02.x) == 100)
         {
           //console.log("goteem");
           console.log(this.ship02.x);
           this.game.settings.health -= 1;
           console.log("2 the health is now:" + this.game.settings.health);
         }
-        if(parseInt(this.ship03.x) == 0)
+        if(parseInt(this.ship03.x) == 100)
         {
           //console.log("goteem");
           console.log(this.ship03.x);
           this.game.settings.health -= 1;
           console.log("3 the health is now:" + this.game.settings.health);
         }
-        if(parseInt(this.wavyShip1.x) == 0)
+        if(parseInt(this.wavyShip1.x) == 100)
         {
           //console.log("goteem");
           console.log(this.wavyShip1.x);
           this.game.settings.health -= 1;
           console.log("wavyShip1 the health is now:" + this.game.settings.health);
         }
-        if(parseInt(this.wavyShip2.x) == 0)
+        if(parseInt(this.wavyShip2.x) == 100)
         {
           //console.log("goteem");
           console.log(this.wavyShip2.x);
           this.game.settings.health -= 1;
           console.log("wavyShip2 the health is now:" + this.game.settings.health);
         }
-        if(parseInt(this.wavyShip3.x) == 0)
+        if(parseInt(this.wavyShip3.x) == 100)
         {
           //console.log("goteem");
           console.log(this.wavyShip3.x);
           this.game.settings.health -= 1;
           console.log("wavyShip3 the health is now:" + this.game.settings.health);
         }
-        if(parseInt(this.wavyShip4.x) == 0)
+        if(parseInt(this.wavyShip4.x) == 100)
         {
           //console.log("goteem");
           console.log(this.wavyShip4.x);
           this.game.settings.health -= 1;
           console.log("wavyShip4 the health is now:" + this.game.settings.health);
         }
-        if(parseInt(this.helicopter.x) == 0)
+        if(parseInt(this.helicopter.x) == 100)
         {
           //console.log("goteem");
           console.log(this.helicopter.x);
           this.game.settings.health -= 1;
           console.log("helicopter the health is now:" + this.game.settings.health);
         }
-        if(parseInt(this.helicopter2.x) == 0)
+        if(parseInt(this.helicopter2.x) == 100)
         {
           //console.log("goteem");
           console.log(this.helicopter2.x);
           this.game.settings.health -= 1;
           console.log("helicopter2 the health is now:" + this.game.settings.health);
         }
-        if(parseInt(this.hammerhead.x) == 0)
+        if(parseInt(this.hammerhead.x) == 100)
         {
           //console.log("goteem");
           console.log(this.hammerhead.x);
           this.game.settings.health -= 1;
           console.log("hammerhead the health is now:" + this.game.settings.health);
         }
-        if(parseInt(this.hammerhead2.x) == 0)
+        if(parseInt(this.hammerhead2.x) == 100)
         {
           //console.log("goteem");
           console.log(this.hammerhead2.x);
