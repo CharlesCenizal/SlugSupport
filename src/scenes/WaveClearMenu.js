@@ -66,7 +66,7 @@ class WaveClearMenu extends Phaser.Scene {
     update() {
         //this.music.play(musicConfig);
         if (Phaser.Input.Keyboard.JustDown(keyQ)) {
-            game.settings.speedMultiplier += .03;
+            game.settings.speedMultiplier += .02;
             game.settings.currWave += 1;
             game.settings.turretSpeed += 1;
             this.sound.play('sfx_select');
@@ -81,9 +81,9 @@ class WaveClearMenu extends Phaser.Scene {
             this.scene.start("wave" + game.settings.currWave + "Scene");
         }
         if (Phaser.Input.Keyboard.JustDown(keyW)) {
-            game.settings.speedMultiplier += .03;
+            game.settings.speedMultiplier += .02;
             game.settings.currWave += 1;
-            game.settings.maxAmmo += 1;
+            game.settings.maxAmmo += 5;
             this.sound.play('sfx_select');
             if (game.settings.currWave >= 10) {
                 this.scene.start("wave10Scene");
@@ -94,9 +94,9 @@ class WaveClearMenu extends Phaser.Scene {
             this.scene.start("wave" + game.settings.currWave + "Scene");
         }
         if (Phaser.Input.Keyboard.JustDown(keyE)) {
-            game.settings.speedMultiplier += .03;
+            game.settings.speedMultiplier += .02;
             game.settings.currWave += 1;
-            game.settings.bulletSpeed += 25;
+            game.settings.bulletSpeed += 50;
             this.sound.play('sfx_select');
             if (game.settings.currWave >= 10) {
                 this.scene.start("wave10Scene");
@@ -108,9 +108,9 @@ class WaveClearMenu extends Phaser.Scene {
             this.scene.start("wave1Scene");
         }
         if (Phaser.Input.Keyboard.JustDown(keyR)) {
-            game.settings.speedMultiplier += .03;
+            game.settings.speedMultiplier += .02;
             game.settings.currWave += 1;
-            game.settings.sprayMagnitude += 5;
+            game.settings.sprayMagnitude += 10;
             this.sound.play('sfx_select');
             if (game.settings.currWave >= 10) {
                 this.scene.start("wave10Scene");

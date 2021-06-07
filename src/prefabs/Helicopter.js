@@ -19,7 +19,7 @@ class Helicopter extends Phaser.GameObjects.Sprite {
 
         // wrap around
 
-        if (this.x <= 0 - this.width && this.lifePoints > 0) {
+        if (this.x <= 190 - this.width && this.lifePoints > 0) {
             this.reset();
         }
     }
@@ -37,7 +37,7 @@ class Helicopter extends Phaser.GameObjects.Sprite {
         //console.log(this.game.settings.health);
         //console.log(this.moveSpeed);
         this.x = game.config.width;
-        let randheight = Math.floor(Math.random() * game.config.height);
+        let randheight = Math.floor(Math.random() * (game.config.height - 65));
         if (randheight < 34) {
             randheight = 34;
         }

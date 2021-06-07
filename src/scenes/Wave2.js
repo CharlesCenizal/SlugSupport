@@ -6,8 +6,12 @@ class Wave2 extends Phaser.Scene {
 
     preload() {
         // first background
-        this.load.image('map_1', './assets/map1.png')
-        this.load.image('bg1', './assets/bg1.png')
+        this.load.image('tower', './assets/TOWER.png')
+        this.load.image('sky', './assets/noon_sky.png')
+        this.load.image('hill1', './assets/noon_hill1.png')
+        this.load.image('hill2', './assets/noon_hill2.png')
+        this.load.image('hill3', './assets/noon_hill3.png')
+        this.load.image('hill4', './assets/noon_hill4.png')
         this.load.image('rocket', './assets/TURRET.png');
         this.load.image('spaceship', './assets/spaceship.png');
         this.load.image('hammerhead', './assets/Hammerhead.png');
@@ -18,7 +22,7 @@ class Wave2 extends Phaser.Scene {
         this.load.image('stealthPlane','./assets/stealthPlane.png')
         this.load.image('bullet','./assets/Bullet.png')
 
-        this.load.spritesheet('explosion', './assets/explosion.png', {
+        this.load.spritesheet('explosion', './assets/explosion1.png', {
             frameWidth: 64,
             frameHeight: 32,
             startFrame: 0,
@@ -69,15 +73,20 @@ class Wave2 extends Phaser.Scene {
             maxSize: game.settings.maxAmmo
         });
 
-        this.curr_background = this.add.tileSprite(0,0, game.config.width, game.config.height, 'bg1').setOrigin(0, 0);
+        this.sky = this.add.tileSprite(0,0, game.config.width, game.config.height, 'sky').setOrigin(0, 0);
+        this.hill4 = this.add.tileSprite(0,0, game.config.width, game.config.height, 'hill4').setOrigin(0, 0);
+        this.hill3 = this.add.tileSprite(0,0, game.config.width, game.config.height, 'hill3').setOrigin(0, 0);
+        this.hill2 = this.add.tileSprite(0,0, game.config.width, game.config.height, 'hill2').setOrigin(0, 0);
+        this.hill1 = this.add.tileSprite(0,0, game.config.width, game.config.height, 'hill1').setOrigin(0, 0);
 
-        this.player1Rocket = new Rocket(this, 20, game.config.height / 2, 'rocket', game.settings.turretSpeed).setOrigin(0.5, 0.5);
+        this.tower = new Tower(this, 0, 0, 'tower').setOrigin(0, 0);
+        this.player1Rocket = new Rocket(this, 42, game.config.height / 2, 'rocket', game.settings.turretSpeed).setOrigin(0.5, 0.5);
         // add spaceshift (x3)
 
-        this.ship01 = new Spaceship(this, game.config.width + borderUISize * 6, borderUISize * 4-75, 'e1', 0, 30, 2).setOrigin(0, 0);
-        this.ship02 = new Spaceship(this, game.config.width + borderUISize * 3, borderUISize * 5 + borderPadding * 2-75, 'e1', 0, 20, 2).setOrigin(0, 0);
-        this.ship03 = new Spaceship(this, game.config.width, borderUISize * 6 + borderPadding * 4-75, 'e1', 0, 10, 2).setOrigin(0, 0);
-        this.ship04 = new Spaceship(this, game.config.width, borderUISize * 6 + borderPadding * 7-75, 'e1', 0, 10, 2).setOrigin(0, 0);
+        this.ship01 = new Spaceship(this, game.config.width + Math.floor(Math.random() * 300), Math.floor(Math.random() * (game.config.height - 34)), 'e1', 0, 30, 2).setOrigin(0, 0);
+        this.ship02 = new Spaceship(this, game.config.width + Math.floor(Math.random() * 300), Math.floor(Math.random() * (game.config.height - 34)), 'e1', 0, 20, 2).setOrigin(0, 0);
+        this.ship03 = new Spaceship(this, game.config.width + Math.floor(Math.random() * 300), Math.floor(Math.random() * (game.config.height - 34)), 'e1', 0, 10, 2).setOrigin(0, 0);
+        this.ship04 = new Spaceship(this, game.config.width, Math.floor(Math.random() * (game.config.height - 34)), 'e1', 0, 10, 2).setOrigin(0, 0);
 
         // define keys
         keyF = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.F);
@@ -155,7 +164,11 @@ class Wave2 extends Phaser.Scene {
 
         }.bind(this));
 
-        this.curr_background.tilePositionX += starSpeed;
+        this.hill4.tilePositionX += 0.25;
+        this.hill3.tilePositionX += 0.50;
+        this.hill2.tilePositionX += 0.75;
+        this.hill1.tilePositionX += 1.00;
+
 
         if (!this.gameOver) {
             // update rocket
@@ -202,6 +215,7 @@ class Wave2 extends Phaser.Scene {
     shoot(x, y) {
         let bullet = this.bullets.get(x, y);
         if (bullet) {
+            this.sound.play('sfx_rocket');
             bullet.setActive(true);
             bullet.setVisible(true);
             bullet.body.velocity.x = 200 + game.settings.bulletSpeed;
@@ -217,7 +231,7 @@ class Wave2 extends Phaser.Scene {
     }
 
     checkCollision(rocket, ship) {
-        if (!rocket.active || !ship.active) {
+        if (!rocket.active || !ship.active || !ship.visible) {
           return false;
         }
         // simple AABB checking
@@ -236,6 +250,12 @@ class Wave2 extends Phaser.Scene {
         this.sound.play('explode');
         ship.setVisible(false);
         ship.setActive(false);
-        ship.takeDamage();
+        let boom = this.add.sprite(ship.x, ship.y, 'explosion').setOrigin(0, 0);
+        boom.anims.play('explode');        
+        boom.on('animationcomplete', () => { 
+            ship.takeDamage();                    
+            ship.alpha = 1;                    
+            boom.destroy();                       
+        });
     }
 }
