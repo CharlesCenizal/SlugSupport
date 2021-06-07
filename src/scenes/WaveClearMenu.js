@@ -4,7 +4,7 @@ class WaveClearMenu extends Phaser.Scene {
     }
     preload() {
 
-        this.load.image('clear', './assets/clear.png')
+        this.load.image('cleared', './assets/clear.jpg')
         this.load.audio('sfx_select', './assets/select_Current.wav');
         this.load.audio('sfx_explosion', './assets/assets_explosion38.wav');
         this.load.audio('sfx_rocket', './assets/assets_rocket_shot.wav');
@@ -44,7 +44,7 @@ class WaveClearMenu extends Phaser.Scene {
         // show menu text
         var newWave = game.settings.currWave+1;
         var str = "Get Ready for Wave " + newWave.toString();
-        this.map_1 = this.add.tileSprite(0, 0, game.config.width, game.config.height, 'clear').setOrigin(0, 0);
+        this.clearWave = this.add.tileSprite(0, 0, game.config.width, game.config.height, 'cleared').setOrigin(0, 0);
 
         menuConfig.backgroundColor = "#4B0082";
         menuConfig.color = '#ADD8E6';
