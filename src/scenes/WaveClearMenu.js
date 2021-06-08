@@ -101,7 +101,7 @@ class WaveClearMenu extends Phaser.Scene {
         if (Phaser.Input.Keyboard.JustDown(keyW)) {
             game.settings.speedMultiplier += .01;
             game.settings.currWave += 1;
-            game.settings.maxAmmo += 5;
+            game.settings.maxAmmo += 50;
             this.sound.play('sfx_select');
             console.log("From Select -> now on wave " + game.settings.currWave);
             if (game.settings.currWave >= 10) {
